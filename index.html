@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تطبيق الأفلام الجزائرية</title>
     
-    <!-- السكربت الأول من Adsterra -->
     <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
 
     <style>
@@ -57,6 +56,47 @@
             padding: 0 16px;
             flex: 1;
             width: 100%;
+        }
+
+        /* لافتة إعلانية واضحة يعلم الزائر محتواها قبل الضغط عليها */
+        .promo-banner {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #334155;
+        }
+
+        .promo-banner h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #38bdf8;
+        }
+
+        .promo-banner p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .promo-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .promo-btn:hover {
+            background-color: #b50d2c;
+            transform: translateY(-2px);
         }
 
         /* حاوية إعلانات البانر الوسطية */
@@ -158,6 +198,48 @@
             text-align: center;
         }
 
+        /* نافذة التنبيه عند الضغط على الفيلم */
+        #loading-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 320px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         /* شريط التنقل بين الصفحات */
         .pagination {
             display: flex;
@@ -223,10 +305,14 @@
 
     <div class="main-container">
 
-        <!-- شبكة عرض الأفلام -->
+        <div class="promo-banner">
+            <h3>🌟 رعاية منصة العرض والشركاء المميزين</h3>
+            <p>اضغط على اللافتة أدناه لاستعراض العروض الحصرية ودعم استمرار وتطوير التطبيق مجاناً</p>
+            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="promo-btn">فتح العرض الحصري والرعاية 🚀</a>
+        </div>
+
         <div id="movies-grid" class="movies-grid"></div>
 
-        <!-- البانر الإعلاني (300x250) مدمج وسط الصفحة -->
         <div class="ad-container">
             <script>
               atOptions = {
@@ -240,7 +326,6 @@
             <script src="https://www.highrevenueformat.com/2403ecb124b17df2d80c5500bb88e687/invoke.js"></script>
         </div>
 
-        <!-- أزرار التنقل (6 أفلام لكل صفحة مع عدة صفحات تلقائية) -->
         <div class="pagination">
             <button id="prev-btn" class="page-btn" onclick="changePage(-1)">← السابق</button>
             <span id="page-info" class="page-info">الصفحة 1 من 1</span>
@@ -249,15 +334,20 @@
 
     </div>
 
+    <div id="loading-modal">
+        <div class="modal-content">
+            <div style="font-size: 40px; margin-bottom: 10px;">🎞️</div>
+            <h3>جاري فتح الفيلم...</h3>
+            <p>يرجى الانتظار، يتم تحضير مشغل الفيديو وعرض الفيلم لك فوراً.</p>
+        </div>
+    </div>
+
     <footer>
         جميع الحقوق محفوظة © 2026 - منصة الأفلام الجزائرية
     </footer>
 
     <script>
-        // رابط Direct Link الخاص بك لتوليد الأرباح عند الضغط على الأفلام
-        const adDirectLink = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
-
-        // قائمة ضخمة لأفلام متعددة (أكثر من 30 فيلماً لتتوزع على عدة صفحات بـ 6 أفلام لكل صفحة)
+        // قائمة الأفلام
         const movies = [
             { title: "معركة الجزائر", desc: "ملحمة ثورية عالمية ترصد تفاصيل الكفاح البطولي.", image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر" },
             { title: "ريح الأوراس", desc: "دراما إنسانية وتاريخية خالدة توثق معاناة العائلات.", image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+ريح+الأوراس" },
@@ -288,7 +378,7 @@
             { title: "عصيد الزمان", desc: "ملحمة تقليدية ترصد تفاصيل الحياة القديمة.", image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=التراث+الجزائري+الأصيل" }
         ];
 
-        const itemsPerPage = 6; // 6 مربعات في كل صفحة بالضبط
+        const itemsPerPage = 6; 
         let currentPage = 1;
         const totalPages = Math.ceil(movies.length / itemsPerPage);
 
@@ -317,10 +407,14 @@
                     </div>
                 `;
 
-                // الضغط يفتح إعلان Adsterra Direct Link في الخلفية وينقل لليوتيوب
+                // عند الضغط على الفيلم: يظهر تنبيه أن الفيلم يفتح، ثم ينتقل للفيلم
                 card.onclick = function() {
-                    window.open(adDirectLink, '_blank');
-                    window.location.href = movie.link;
+                    const modal = document.getElementById('loading-modal');
+                    modal.style.display = 'flex';
+
+                    setTimeout(function() {
+                        window.location.href = movie.link;
+                    }, 1200);
                 };
 
                 grid.appendChild(card);
