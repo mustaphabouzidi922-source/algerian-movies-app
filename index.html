@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تطبيق الأفلام الجزائرية</title>
+    
+    <!-- السكربت الأول من Adsterra -->
+    <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
+
     <style>
         :root {
             --primary: #006233;
@@ -55,16 +59,13 @@
             width: 100%;
         }
 
-        /* مساحة الإعلانات */
-        .ad-banner {
-            background: #e2e8f0;
-            border: 2px dashed #cbd5e1;
-            color: var(--gray);
+        /* حاوية إعلانات البانر الوسطية */
+        .ad-container {
             text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
         }
 
         /* شبكة عرض الأفلام */
@@ -85,6 +86,7 @@
             display: flex;
             flex-direction: column;
             border: 1px solid #e2e8f0;
+            cursor: pointer;
             text-decoration: none;
             color: inherit;
         }
@@ -220,25 +222,31 @@
     </header>
 
     <div class="main-container">
-        <!-- إعلان أعلى المحتوى -->
-        <div class="ad-banner">
-            📢 مساحة إعلانية ممولة (Ad Banner Space)
-        </div>
 
         <!-- شبكة عرض الأفلام -->
         <div id="movies-grid" class="movies-grid"></div>
 
-        <!-- أزرار التنقل (6 أفلام لكل صفحة بالضبط) -->
+        <!-- البانر الإعلاني (300x250) مدمج وسط الصفحة -->
+        <div class="ad-container">
+            <script>
+              atOptions = {
+                'key' : '2403ecb124b17df2d80c5500bb88e687',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highrevenueformat.com/2403ecb124b17df2d80c5500bb88e687/invoke.js"></script>
+        </div>
+
+        <!-- أزرار التنقل (6 أفلام لكل صفحة مع عدة صفحات تلقائية) -->
         <div class="pagination">
             <button id="prev-btn" class="page-btn" onclick="changePage(-1)">← السابق</button>
-            <span id="page-info" class="page-info">الصفحة 1 من 2</span>
+            <span id="page-info" class="page-info">الصفحة 1 من 1</span>
             <button id="next-btn" class="page-btn" onclick="changePage(1)">التالي →</button>
         </div>
 
-        <!-- إعلان أسفل المحتوى -->
-        <div class="ad-banner" style="margin-top: 20px;">
-            📢 مساحة إعلانية أخرى متوفرة
-        </div>
     </div>
 
     <footer>
@@ -246,83 +254,41 @@
     </footer>
 
     <script>
-        // قائمة الأفلام (12 فيلماً لتعطي صفحتين بدقة، 6 أفلام في كل صفحة)
+        // رابط Direct Link الخاص بك لتوليد الأرباح عند الضغط على الأفلام
+        const adDirectLink = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
+
+        // قائمة ضخمة لأفلام متعددة (أكثر من 30 فيلماً لتتوزع على عدة صفحات بـ 6 أفلام لكل صفحة)
         const movies = [
-            { 
-                title: "معركة الجزائر", 
-                desc: "ملحمة ثورية عالمية ترصد تفاصيل الكفاح البطولي.", 
-                image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر" 
-            },
-            { 
-                title: "ريح الأوراس", 
-                desc: "دراما إنسانية وتاريخية خالدة توثق معاناة العائلات.", 
-                image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=فيلم+ريح+الأوراس" 
-            },
-            { 
-                title: "الأفيون والعصا", 
-                desc: "قصة الصمود الأسطوري لقرية جزائرية في وجه الاستعمار.", 
-                image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=فيلم+الأفيون+والعصا" 
-            },
-            { 
-                title: "دورية تشرف الموت", 
-                desc: "تحفة سينمائية حربية تعكس بسالة جيش التحرير.", 
-                image: "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=فيلم+دورية+تشرف+الموت" 
-            },
-            { 
-                title: "وقائع سنين الجمر", 
-                desc: "الفيلم الجزائري الحائز على السعفة الذهبية في مهرجان كان.", 
-                image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=فيلم+وقائع+سنين+الجمر" 
-            },
-            { 
-                title: "حسن طيرو", 
-                desc: "دراما تاريخية وكوميديا سوداء ترصد جانب المقاومة.", 
-                image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=فيلم+حسن+طيرو" 
-            },
-            { 
-                title: "حسان الطاكسي", 
-                desc: "أيقونة الكوميديا الجزائرية الكلاسيكية الممتعة.", 
-                image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=فيلم+حسان+الطاكسي" 
-            },
-            { 
-                title: "عطلة المفتش الطاهر", 
-                desc: "مغامرات بوليسية كوميدية ساحرة من التراث.", 
-                image: "https://images.unsplash.com/photo-1512070679273-8982cc32bc55?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=فيلم+عطلة+المفتش+الطاهر" 
-            },
-            { 
-                title: "عائلة مفترسة", 
-                desc: "عمل درامي اجتماعي عريق يعكس العلاقات الأسرية.", 
-                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=أفلام+جزائرية+اجتماعية" 
-            },
-            { 
-                title: "صراع الكبار", 
-                desc: "حبكة سياسية واجتماعية ضمن الإنتاجات الكلاسيكية.", 
-                image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=أفلام+جزائرية+كلاسيكية" 
-            },
-            { 
-                title: "منطقة الظل", 
-                desc: "فيلم تشويق درامي بمعالجة سينمائية مميزة.", 
-                image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=أفلام+جزائرية+درامية" 
-            },
-            { 
-                title: "أيام الاستطلاع", 
-                desc: "سيرة توثيقية حية لمحطات نضالية كبرى.", 
-                image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=80",
-                link: "https://www.youtube.com/results?search_query=أفلام+تاريخية+جزائرية" 
-            }
+            { title: "معركة الجزائر", desc: "ملحمة ثورية عالمية ترصد تفاصيل الكفاح البطولي.", image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر" },
+            { title: "ريح الأوراس", desc: "دراما إنسانية وتاريخية خالدة توثق معاناة العائلات.", image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+ريح+الأوراس" },
+            { title: "الأفيون والعصا", desc: "قصة الصمود الأسطوري لقرية جزائرية في وجه الاستعمار.", image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+الأفيون+والعصا" },
+            { title: "دورية تشرف الموت", desc: "تحفة سينمائية حربية تعكس بسالة جيش التحرير.", image: "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+دورية+تشرف+الموت" },
+            { title: "وقائع سنين الجمر", desc: "الفيلم الجزائري الحائز على السعفة الذهبية في مهرجان كان.", image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+وقائع+سنين+الجمر" },
+            { title: "حسن طيرو", desc: "دراما تاريخية وكوميديا سوداء ترصد جانب المقاومة.", image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+حسن+طيرو" },
+            
+            { title: "حسان الطاكسي", desc: "أيقونة الكوميديا الجزائرية الكلاسيكية الممتعة.", image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+حسان+الطاكسي" },
+            { title: "عطلة المفتش الطاهر", desc: "مغامرات بوليسية كوميدية ساحرة من التراث.", image: "https://images.unsplash.com/photo-1512070679273-8982cc32bc55?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+عطلة+المفتش+الطاهر" },
+            { title: "عائلة مفترسة", desc: "عمل درامي اجتماعي عريق يعكس العلاقات الأسرية.", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=أفلام+جزائرية+اجتماعية" },
+            { title: "صراع الكبار", desc: "حبكة سياسية واجتماعية ضمن الإنتاجات الكلاسيكية.", image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=أفلام+جزائرية+كلاسيكية" },
+            { title: "منطقة الظل", desc: "فيلم تشويق درامي بمعالجة سينمائية مميزة.", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=أفلام+جزائرية+درامية" },
+            { title: "أيام الاستطلاع", desc: "سيرة توثيقية حية لمحطات نضالية كبرى.", image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=أفلام+تاريخية+جزائرية" },
+
+            { title: "المفتش الطاهر في إجازة", desc: "مواقف كوميدية مضحكة وطريفة للغاية.", image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=المفتش+الطاهر" },
+            { title: "سنوات الإستدمار", desc: "توثيق دقيق لفترة مظلمة من تاريخ الكفاح.", image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=أفلام+ثورية+جزائرية" },
+            { title: "حكايات باية", desc: "دراما واقعية مستوحاة من البيئة الريفية.", image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=سينما+جزائرية" },
+            { title: "المنارة", desc: "فيلم سوسيو-ثقافي يطرح قضايا الجيل الجديد.", image: "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+المنارة+الجزائري" },
+            { title: "أرزة الجزائر", desc: "رحلة بحث عن الهوية والتاريخ المشترك.", image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=أفلام+دراما+جزائرية" },
+            { title: "الخارجون عن القانون", desc: "قصة ملحمية عن ثلاثة إخوة وثورة المليون شهيد.", image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+الخارجون+عن+القانون" },
+
+            { title: "صمت الأقواس", desc: "لوحة سينمائية تعكس التراث العاصمي العريق.", image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+صمت+الأقواس" },
+            { title: "مسك الليل", desc: "قصة اجتماعية درامية مليئة بالعبر.", image: "https://images.unsplash.com/photo-1512070679273-8982cc32bc55?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+مسك+الليل" },
+            { title: "العشك المُر", desc: "دراما بدوية وصحراوية تعكس تقاليد الأصالة.", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=أفلام+صحراوية+جزائرية" },
+            { title: "بوابة السحرة", desc: "خيال ومغامرة من التراث الشعبي الجزائري.", image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=حكايات+جزائرية" },
+            { title: "طحطوحة", desc: "كوميديا اجتماعية ساخرة ومحبوبة جداً.", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=مسرحيات+وأفلام+جزائرية+كوميدية" },
+            { title: "عصيد الزمان", desc: "ملحمة تقليدية ترصد تفاصيل الحياة القديمة.", image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=التراث+الجزائري+الأصيل" }
         ];
 
-        const itemsPerPage = 6; // بالضبط 6 مربعات في كل صفحة
+        const itemsPerPage = 6; // 6 مربعات في كل صفحة بالضبط
         let currentPage = 1;
         const totalPages = Math.ceil(movies.length / itemsPerPage);
 
@@ -335,9 +301,7 @@
             const currentMovies = movies.slice(start, end);
 
             currentMovies.forEach(movie => {
-                const card = document.createElement('a');
-                card.href = movie.link;
-                card.target = "_blank";
+                const card = document.createElement('div');
                 card.className = 'movie-card';
                 card.innerHTML = `
                     <div class="movie-poster-wrapper">
@@ -352,6 +316,13 @@
                         <span class="watch-action">مشاهدة الفيلم 🎥</span>
                     </div>
                 `;
+
+                // الضغط يفتح إعلان Adsterra Direct Link في الخلفية وينقل لليوتيوب
+                card.onclick = function() {
+                    window.open(adDirectLink, '_blank');
+                    window.location.href = movie.link;
+                };
+
                 grid.appendChild(card);
             });
 
