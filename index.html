@@ -3,185 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أفلام الزمن الجميل الجزائري</title>
-    <!-- سكربت Adsterra الأساسي (Social Bar) يعمل في الخلفية لتحقيق الأرباح دون تخريب الزر -->
-    <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
+    <title>تطبيق الأفلام الجزائرية</title>
     <style>
         :root {
-            --primary: #8b0000;
-            --secondary: #d4af37;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #f1f1f1;
+            --primary-color: #006233; /* الأخضر الجزائري */
+            --accent-color: #d21034;  /* الأحمر الجزائري */
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-color: #333333;
         }
         body {
-            font-family: 'Tahoma', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding: 0;
         }
         header {
-            background: linear-gradient(135deg, #1a0000, #3a0000);
-            border-bottom: 3px solid var(--secondary);
-            padding: 20px;
+            background: linear-gradient(135deg, var(--primary-color), #004d28);
+            color: white;
             text-align: center;
+            padding: 20px 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         header h1 {
             margin: 0;
-            color: var(--secondary);
-            font-size: 24px;
+            font-size: 1.5rem;
         }
         header p {
-            margin: 5px 0 0;
-            color: #bbb;
-            font-size: 14px;
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 15px;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
-        .search-box {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            background: #252525;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
+        /* إعلان بانر العلوي */
+        .ad-banner {
+            text-align: center;
+            margin-bottom: 15px;
+            min-height: 50px;
         }
         .movie-card {
             background: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            border-radius: 12px;
             padding: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
         .movie-title {
-            font-size: 18px;
-            color: var(--secondary);
-            margin-top: 0;
-            margin-bottom: 10px;
-            border-right: 4px solid var(--primary);
-            padding-right: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0;
         }
         .movie-desc {
-            font-size: 13px;
-            color: #aaa;
-            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
         }
-        .action-btns {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .btn {
-            flex: 1;
-            padding: 12px 15px;
+        .watch-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
             text-align: center;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 14px;
-            display: inline-flex;
+            transition: background 0.2s;
+        }
+        .watch-btn:active {
+            opacity: 0.8;
+        }
+        /* أزرار التصفح (الصفحات والأسهم) */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn-watch {
-            background-color: var(--primary);
-            color: white;
-        }
-        .btn-mp4 {
-            background-color: #2e7d32;
-            color: white;
-        }
-        .ad-banner-box {
-            text-align: center;
             margin: 25px 0;
-            background: #181818;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px dashed #444;
+            padding: 0 10px;
+        }
+        .page-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+        }
+        .page-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        .page-info {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: #555;
         }
         footer {
             text-align: center;
-            padding: 20px;
-            color: #777;
-            font-size: 12px;
-            border-top: 1px solid #222;
+            padding: 15px;
+            font-size: 0.8rem;
+            color: #888;
+            border-top: 1px solid #ddd;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🎬 أفلام الزمن الجميل الجزائري</h1>
-        <p>أرشيف الروائع السينمائية الجزائرية والتاريخية والثورية</p>
+        <h1>🎬 سينما الجزائر</h1>
+        <p>أرشيف الأفلام الكلاسيكية والثورية الخالدة</p>
     </header>
 
     <div class="container">
-        <input type="text" class="search-box" id="searchInput" placeholder="ابحث عن فيلم..." onkeyup="searchMovies()">
-
-        <div id="movieList">
-            <!-- فيلم 1 -->
-            <div class="movie-card" data-title="عطلة المفتش الطاهر المفتش الطاهر كوميديا">
-                <h3 class="movie-title">1. عطلة المفتش الطاهر (1973)</h3>
-                <div class="movie-desc">النوع: كوميديا، بوليسي | البطوله: المفتش الطاهر، حاج عبد الرحمن.</div>
-                <div class="action-btns">
-                    <!-- ضع رابط الفيلم الحقيقي هنا مكان علامات التنصيص -->
-                    <a href="https://www.youtube.com/watch?v=RAB_REAL_LINK_HERE" class="btn btn-watch" target="_blank">▶ مشاهدة الفيلم</a>
-                    <a href="https://www.youtube.com/watch?v=RAB_REAL_LINK_HERE" class="btn btn-mp4" target="_blank">📥 تحميل MP4</a>
-                </div>
-            </div>
-
-            <!-- إعلان Banner Adsterra المربع -->
-            <div class="ad-banner-box">
-                <script>
-                  atOptions = {
-                    'key' : '2403ecb124b17df2d80c5500bb88e687',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://www.highrevenueformat.com/2403ecb124b17df2d80c5500bb88e687/invoke.js"></script>
-            </div>
-
-            <!-- فيلم 2 -->
-            <div class="movie-card" data-title="معركة الجزائر الثورة التاريخ">
-                <h3 class="movie-title">2. معركة الجزائر (1966)</h3>
-                <div class="movie-desc">النوع: دراما تاريخية / ثوري.</div>
-                <div class="action-btns">
-                    <a href="https://www.youtube.com/watch?v=RAB_REAL_LINK_HERE" class="btn btn-watch" target="_blank">▶ مشاهدة الفيلم</a>
-                    <a href="https://www.youtube.com/watch?v=RAB_REAL_LINK_HERE" class="btn btn-mp4" target="_blank">📥 تحميل MP4</a>
-                </div>
-            </div>
+        
+        <!-- إعلان بانر Adsterra (استبدل الكود الخاص بك هنا إن شئت) -->
+        <div class="ad-banner">
+            <script type="text/javascript">
+                // ضع شفرة بانر Adsterra هنا إذا رغبت
+            </script>
         </div>
+
+        <!-- قائمة الأفلام الديناميكية -->
+        <div id="movies-container"></div>
+
+        <!-- أزرار التنقل بين الصفحات بالسهم -->
+        <div class="pagination">
+            <button id="prev-btn" class="page-btn" onclick="changePage(-1)">السابق ←</button>
+            <span id="page-info" class="page-info">الصفحة 1 من 3</span>
+            <button id="next-btn" class="page-btn" onclick="changePage(1)">التالي →</button>
+        </div>
+
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة - تطبيق أفلام الزمن الجميل الجزائري &copy; 2026</p>
-    </footer>
+        جميع الحقوق محفوظة &copy; 2026 - تطبيق الأفلام الجزائرية
+    ></footer>
 
+    <!-- سكربت إدارة الصفحات والأفلام -->
     <script>
-        function searchMovies() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('movie-card');
-            for (let i = 0; i < cards.length; i++) {
-                let title = cards[i].getAttribute('data-title').toLowerCase();
-                if (title.includes(input)) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
+        // قائمة الأفلام الجزائرية (يمكنك إضافة أو تعديل الروابط وأسماء الأفلام بسهولة)
+        const movies = [
+            { title: "1. معركة الجزائر (The Battle of Algiers)", desc: ملحمة الثورة الجزائرية الخالدة., link: "https://www.youtube.com/results?search_query=معركة+الجزائر+فيلم" },
+            { title: "2. ريح الأوراس (Chronique des années de braise / Vent des Aurès)", desc: فيلم ثوري درامي عريق., link: "https://www.youtube.com/results?search_query=فيلم+ريح+الأوراس" },
+            { title: "3. الأفيون والعصا (L'Opium et le Bâton)", desc: قصة المقاومة والبطولة في الجبال., link: "https://www.youtube.com/results?search_query=فيلم+الأفيون+العصا" },
+            { title: "4. دورية تشرف الموت (Patrouille à l'Est / موريتوري)", desc: إحدى رائعة السينما الحربية الجزائرية., link: "https://www.youtube.com/results?search_query=فيلم+دورية+تشرف+الموت" },
+            { title: "5. وقائع سنين الجمر", desc: الحائز على السعفة الذهبية في كان., link: "https://www.youtube.com/results?search_query=وقائع+سنين+الجمر" },
+            { title: "6. حسن التيرانو / حسن طيرو", desc: فيلم كوميديا سوداء درامي تاريخي., link: "https://www.youtube.com/results?search_query=فيلم+حسن+طيرو" },
+            { title: "7. العائلة (La Famille)", desc: دراما اجتماعية جزائرية كلاسيكية., link: "https://www.youtube.com/results?search_query=فيلم+العائلة+الجزائري" },
+            { title: "8. حسان الطاكسي", desc: من أشهر الكلاسيكيات الكوميدية الخالدة., link: "https://www.youtube.com/results?search_query=فيلم+حسان+الطاكسي" },
+            { title: "9. عطلة المفتش الطاهر", desc: الكوميديا البوليسية الكلاسيكية المحبوبة., link: "https://www.youtube.com/results?search_query=فيلم+عطلة+المفتش+الطاهر" },
+            { title: "10. قطار الإبطال / صدى الإوراس", desc: محطات نضالية تاريخية مجيدة., link: "https://www.youtube.com/results?search_query=أفلام+جزائرية+ثورية" },
+            { title: "11. إبنة المدافع / صراع الكبار", desc: ملحمة سينمائية وطنية مميزة., link: "https://www.youtube.com/results?search_query=أفلام+جزائرية+كلاسيكية" },
+            { title: "12. صهريج الأبطال", desc: فيلم تاريخي يروي قصص الكفاح., link: "https://www.youtube.com/results?search_query=أفلام+تاريخية+جزائرية" }
+        ];
+
+        const itemsPerPage = 4; // عدد الأفلام في كل صفحة
+        let currentPage = 1;
+        const totalPages = Math.ceil(movies.length / itemsPerPage);
+
+        function renderMovies() {
+            const container = document.getElementById('movies-container');
+            container.innerHTML = "";
+
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const currentMovies = movies.slice(start, end);
+
+            currentMovies.forEach(movie => {
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                card.innerHTML = `
+                    <h3 class="movie-title">${movie.title}</h3>
+                    <p class="movie-desc">${movie.desc}</p>
+                    <a href="${movie.link}" target="_blank" class="watch-btn" onclick="triggerAdsterraLink()">مشاهدة / تحميل الفيلم 🎥</a>
+                `;
+                container.appendChild(card);
+            });
+
+            // تحديث معلومات الصفحة وأزرار التنقل
+            document.getElementById('page-info').innerText = `الصفحة ${currentPage} من ${totalPages}`;
+            document.getElementById('prev-btn').disabled = currentPage === 1;
+            document.getElementById('next-btn').disabled = currentPage === totalPages;
         }
+
+        function changePage(direction) {
+            currentPage += direction;
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            renderMovies();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // دالة ربط اختياري لفتح روابط إعلانات Direct Link عند النقر (اختياري لتفعيل أرباح إضافية)
+        function triggerAdsterraLink() {
+            // يمكنك وضع رابط Direct Link الخاص بـ Adsterra هنا إذا أردت فتحه في نافذة خلفية:
+            // window.open('رابط_Adsterra_Direct_Link_هنا', '_blank');
+        }
+
+        // التهيئة الأولية عند تحميل الصفحة
+        window.onload = function() {
+            renderMovies();
+        };
     </script>
 </body>
 </html>
