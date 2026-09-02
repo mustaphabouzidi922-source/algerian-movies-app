@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أفلام الجيل الذهبي الجزائري - استرجع ذكريات الزمن الجميل</title>
     
-    <!-- ===== إعدادات ظهور الموقع على وسائل التواصل الاجتماعي (Open Graph / Social Media Preview) ===== -->
+    <!-- ===== إعدادات ظهور الموقع على وسائل التواصل الاجتماعي (Open Graph) ===== -->
     <meta property="og:title" content="أفلام الجيل الذهبي الجزائري - أرقى الكلاسيكيات والروائع الخالدة">
     <meta property="og:description" content="تصفح وحمل وشاهد أجمل الأفلام والمسرحيات والروائع الكلاسيكية للسينما الجزائرية بجودة عالية.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80">
@@ -354,19 +354,19 @@
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- السكريبت البرمجي لفتح الإعلانات وعرض محتوى البحث -->
+    <!-- السكريبت البرمجي بانتظار 10 ثوانٍ كاملة -->
     <script>
         const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
 
-        // دالة تشغيل الإعلان والفيلم معاً دون إغلاق الموقع
+        // دالة لفتح الإعلان فوراً، ثم الانتظار 10 ثوانٍ (10000 ميلي ثانية) ثم فتح يوتيوب
         function openAdAndVideo(youtubeUrl) {
             window.open(adUrl, '_blank');
             setTimeout(() => {
                 window.open(youtubeUrl, '_blank');
-            }, 300);
+            }, 10000); // 10 ثوانٍ بالضبط
         }
 
-        // دالة شريط البحث المربح
+        // دالة شريط البحث (تفتح الإعلان فوراً، وتنتظر 10 ثوانٍ ثم تذهب لنتائج يوتيوب)
         function performSearch() {
             const query = document.getElementById('search-box').value.trim();
             if (!query) {
@@ -378,7 +378,7 @@
             window.open(adUrl, '_blank');
             setTimeout(() => {
                 window.open(searchUrl, '_blank');
-            }, 300);
+            }, 10000); // 10 ثوانٍ بالضبط
         }
     </script>
 
