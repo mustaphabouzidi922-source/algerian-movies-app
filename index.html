@@ -40,6 +40,30 @@
             flex-direction: column;
         }
 
+        /* تنبيه خاص بمستخدمي فيسبوك */
+        #fb-warning-banner {
+            background: #d21034;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 9999;
+        }
+
+        #fb-warning-banner button {
+            background: white;
+            color: #d21034;
+            border: none;
+            padding: 5px 15px;
+            margin-right: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         header {
             background: linear-gradient(135deg, #004d28, #006233);
             color: white;
@@ -232,6 +256,12 @@
 </head>
 <body>
 
+    <!-- شريط تحذيري يظهر فقط إذا دخل المستخدم من فيسبوك -->
+    <div id="fb-warning-banner">
+        ⚠️ متصفح فيسبوك يغلق الإعلانات! 
+        <button onclick="openInExternalBrowser()">فتح في متصفح كروم الخارجي</button>
+    </div>
+
     <header>
         <h1>🎥 أفلام الجيل الذهبي الجزائري</h1>
         <p>استرجع ذكريات الزمن الجميل مع أرقى الكلاسيكيات والروائع الخالدة</p>
@@ -348,18 +378,35 @@
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- سكريبت متوافق تماماً مع متصفح فيسبوك والهواتف -->
+    <!-- سكريبت ذكي لكشف متصفح فيسبوك وحل مشكلة الإعلانات -->
     <script>
+        // التحقق مما إذا كان المستخدم يفتح الموقع من داخل تطبيق فيسبوك
+        window.onload = function() {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
+                // إظهار شريط تحذيري يطلب منه الخروج لمتصفح كروم
+                document.getElementById('fb-warning-banner').style.display = 'block';
+            }
+        };
+
+        // دالة لفتح الموقع في متصفح خارجي إجباريًا عبر خدعة الـ intent (خاصة بأندرويد)
+        function openInExternalBrowser() {
+            var currentUrl = window.location.href;
+            // محاولة توجيه المتصفح لفتح الرابط خارجيًا
+            var externalUrl = "intent://" + currentUrl.replace(/^https?:\/\//, '') + "#Intent;scheme=https;package=com.android.chrome;end;";
+            window.location.href = externalUrl;
+        }
+
         const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
 
         function openAdAndVideo(youtubeUrl) {
-            // 1. فتح الإعلان في الخلفية أو تحويله بذكاء
-            var adWindow = window.open(adUrl, '_blank');
+            // فتح الإعلان في نافذة جديدة
+            window.open(adUrl, '_blank');
             
-            // 2. توجيه المستخدم مباشرة لصفحة اليوتيوب في الصفحة الحالية أو عبر رابط مدعوم
+            // الانتقال لليوتيوب بعد ثانية واحدة
             setTimeout(function() {
                 window.location.href = youtubeUrl;
-            }, 800);
+            }, 1000);
         }
 
         function performSearch() {
@@ -373,7 +420,7 @@
             window.open(adUrl, '_blank');
             setTimeout(function() {
                 window.location.href = searchUrl;
-            }, 800);
+            }, 1000);
         }
     </script>
 
