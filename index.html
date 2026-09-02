@@ -354,19 +354,19 @@
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- السكريبت البرمجي بانتظار 10 ثوانٍ كاملة -->
+    <!-- السكريبت البرمجي بانتظار 3 ثوانٍ فقط -->
     <script>
         const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
 
-        // دالة لفتح الإعلان فوراً، ثم الانتظار 10 ثوانٍ (10000 ميلي ثانية) ثم فتح يوتيوب
+        // دالة لفتح الإعلان فوراً، ثم الانتظار 3 ثوانٍ (3000 ميلي ثانية) ثم فتح يوتيوب
         function openAdAndVideo(youtubeUrl) {
             window.open(adUrl, '_blank');
             setTimeout(() => {
                 window.open(youtubeUrl, '_blank');
-            }, 10000); // 10 ثوانٍ بالضبط
+            }, 3000); // 3 ثوانٍ فقط
         }
 
-        // دالة شريط البحث (تفتح الإعلان فوراً، وتنتظر 10 ثوانٍ ثم تذهب لنتائج يوتيوب)
+        // دالة شريط البحث (تفتح الإعلان فوراً، وتنتظر 3 ثوانٍ ثم تذهب لنتائج يوتيوب)
         function performSearch() {
             const query = document.getElementById('search-box').value.trim();
             if (!query) {
@@ -378,7 +378,7 @@
             window.open(adUrl, '_blank');
             setTimeout(() => {
                 window.open(searchUrl, '_blank');
-            }, 10000); // 10 ثوانٍ بالضبط
+            }, 3000); // 3 ثوانٍ فقط
         }
     </script>
 
