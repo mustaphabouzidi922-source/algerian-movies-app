@@ -22,7 +22,51 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
+     .youtube-search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px 10px;
+    background-color: transparent;
+}
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    background: #1e293b;
+    border: 2px solid #d4af37;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.search-input {<div class="youtube-search-container">
+    <form action="https://www.youtube.com/results" method="get" target="_blank" class="search-form">
+        <input type="text" name="search_query" placeholder="🔍 ابحث عن أي فيلم في يوتيوب..." required class="search-input">
+        <button type="submit" class="search-btn">بحث</button>
+    </form>
+</div>
+
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 12px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+}
+.search-input::placeholder {
+    color: #94a3b8;
+}
+.search-btn {
+    background: #d21034;
+    color: white;
+    border: none;
+    padding: 0 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+   }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
