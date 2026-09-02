@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أفلام الجيل الذهبي الجزائري</title>
     
-    <!-- سكربت الإعلانات الأساسي في الخلفية -->
+    <!-- سكربت الإعلانات الأساسي -->
     <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
 
     <style>
@@ -222,73 +222,6 @@
             margin-top: auto;
             border-top: 3px solid var(--primary);
         }
-
-        /* نافذة العداد التنازلي الإعلاني (تشبه نظام الصور) */
-        #timer-ad-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .timer-box {
-            background: var(--card-bg);
-            border: 2px solid var(--primary);
-            padding: 30px;
-            border-radius: 16px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
-        }
-
-        .timer-box h3 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        /* شكل العداد الرقمي تماماً مثل الصورة */
-        .countdown-display {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #ffffff;
-            background: #0f172a;
-            border: 2px dashed var(--accent);
-            border-radius: 12px;
-            padding: 15px;
-            margin: 20px 0;
-            letter-spacing: 2px;
-        }
-
-        .timer-msg {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .ready-btn {
-            display: none;
-            width: 100%;
-            background-color: var(--accent);
-            color: white;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: background 0.2s;
-        }
-
-        .ready-btn:hover {
-            background-color: #b00d2b;
-        }
     </style>
 </head>
 <body>
@@ -300,20 +233,20 @@
 
     <div class="main-container">
 
-        <!-- شريط البحث -->
+        <!-- شريط البحث المربح -->
         <div class="search-wrapper">
-            <form action="https://www.youtube.com/results" method="get" target="_blank" class="search-form">
-                <button type="submit" class="search-btn">بحث</button>
-                <input type="text" name="search_query" placeholder="🔍 ابحث عن أي فيلم جزائري كلاسيكي..." required class="search-input">
-            </form>
+            <div class="search-form">
+                <button type="button" onclick="performSearch()" class="search-btn">بحث</button>
+                <input type="text" id="search-box" placeholder="🔍 ابحث عن أي فيلم جزائري كلاسيكي..." class="search-input">
+            </div>
         </div>
 
         <h2 class="section-title">✨ مختارات الجيل الذهبي</h2>
 
-        <!-- شبكة 6 مربعات للأفلام -->
+        <!-- شبكة الأفلام -->
         <div class="movies-grid">
             <!-- الفيلم 1 -->
-            <div class="movie-card" onclick="startAdTimer('https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر')">
+            <div class="movie-card" onclick="openAdAndVideo('https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">تحفة سينمائية</span>
                     <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80" alt="معركة الجزائر">
@@ -328,7 +261,7 @@
             </div>
 
             <!-- الفيلم 2 -->
-            <div class="movie-card" onclick="startAdTimer('https://www.youtube.com/results?search_query=فيلم+وقائع سنوات الجمر')">
+            <div class="movie-card" onclick="openAdAndVideo('https://www.youtube.com/results?search_query=فيلم+وقائع سنوات الجمر')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">حائز على السعفة</span>
                     <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" alt="وقائع سنوات الجمر">
@@ -343,7 +276,7 @@
             </div>
 
             <!-- الفيلم 3 -->
-            <div class="movie-card" onclick="startAdTimer('https://www.youtube.com/results?search_query=فيلم+الأفيون والعصا')">
+            <div class="movie-card" onclick="openAdAndVideo('https://www.youtube.com/results?search_query=فيلم+الأفيون والعصا')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">دراما ثورية</span>
                     <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80" alt="الأفيون والعصا">
@@ -358,7 +291,7 @@
             </div>
 
             <!-- الفيلم 4 -->
-            <div class="movie-card" onclick="startAdTimer('https://www.youtube.com/results?search_query=مسرحية+حانوت العجائب+أو+كوميديا جزائرية')">
+            <div class="movie-card" onclick="openAdAndVideo('https://www.youtube.com/results?search_query=مسرحية+حانوت العجائب+أو+كوميديا جزائرية')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">كوميديا وجدانية</span>
                     <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80" alt="روائع الكوميديا">
@@ -373,7 +306,7 @@
             </div>
 
             <!-- الفيلم 5 -->
-            <div class="movie-card" onclick="startAdTimer('https://www.youtube.com/results?search_query=فيلم+الريح+الأحمر')">
+            <div class="movie-card" onclick="openAdAndVideo('https://www.youtube.com/results?search_query=فيلم+الريح+الأحمر')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">كلاسيكي</span>
                     <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=500&q=80" alt="الريح الأحمر">
@@ -388,7 +321,7 @@
             </div>
 
             <!-- الفيلم 6 -->
-            <div class="movie-card" onclick="startAdTimer('https://www.youtube.com/results?search_query=سهرات+التلفزيون الجزائري القديمة')">
+            <div class="movie-card" onclick="openAdAndVideo('https://www.youtube.com/results?search_query=سهرات+التلفزيون الجزائري القديمة')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">تراث أصيل</span>
                     <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80" alt="سهرات الزمن الجميل">
@@ -405,67 +338,42 @@
 
     </div>
 
-    <!-- نافذة العداد التنازلي الإعلاني -->
-    <div id="timer-ad-modal">
-        <div class="timer-box">
-            <h3>⏳ يرجى الانتظار قليلاً...</h3>
-            <p class="timer-msg">جاري تحميل الإعلان وتجهيز الفيلم لك</p>
-            
-            <!-- شاشة العداد الرقمي -->
-            <div id="countdown-number" class="countdown-display">00:05</div>
-            
-            <!-- زر الانتقال الذي يظهر بعد انتهاء العداد -->
-            <button id="go-to-movie-btn" class="ready-btn">🚀 انقر هنا لمشاهدة الفيلم الآن</button>
-        </div>
-    </div>
-
     <footer>
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- سكريبت تشغيل العداد وفتح الإعلانات -->
+    <!-- السكريبت المحدث لفتح النوافذ المنبثقة بشكل صحيح دون مغادرة الموقع -->
     <script>
-        let countdownInterval;
-        let selectedUrl = "";
         const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
 
-        function startAdTimer(url) {
-            selectedUrl = url;
-            const modal = document.getElementById('timer-ad-modal');
-            const countdownDisplay = document.getElementById('countdown-number');
-            const goBtn = document.getElementById('go-to-movie-btn');
-            
-            modal.style.display = 'flex';
-            goBtn.style.display = 'none';
-            countdownDisplay.style.display = 'block';
-
-            // فتح رابط الإعلان في نافذة جديدة مباشرة (لتفعيل أرباحك)
+        // دالة لفتح الإعلان في نافذة جديدة وفي نفس الوقت فتح الفيلم
+        function openAdAndVideo(youtubeUrl) {
+            // فتح الإعلان كنوافذ منبثقة مرتبطة بنقرة المستخدم
             window.open(adUrl, '_blank');
-
-            let timeLeft = 5; // عدد الثواني (مثلاً 5 ثوانٍ)
-            countdownDisplay.innerText = "00:05";
-
-            clearInterval(countdownInterval);
-            countdownInterval = setInterval(() => {
-                timeLeft--;
-                let formattedTime = "00:0" + (timeLeft >= 0 ? timeLeft : 0);
-                countdownDisplay.innerText = formattedTime;
-
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    countdownDisplay.style.display = 'none';
-                    goBtn.style.display = 'block'; // إظهار زر الدخول للفيلم بعد انتهاء العد
-                }
-            }, 1000);
+            
+            // فتح الفيلم المطلوب بعد أجزاء من الثانية
+            setTimeout(() => {
+                window.open(youtubeUrl, '_blank');
+            }, 300);
         }
 
-        // عند الضغط على زر الانتقال للفيلم بعد انتهاء العد
-        document.getElementById('go-to-movie-btn').addEventListener('click', function() {
-            document.getElementById('timer-ad-modal').style.display = 'none';
-            if (selectedUrl) {
-                window.open(selectedUrl, '_blank');
+        // دالة شريط البحث (تفتح الإعلان أولاً ثم تذهب لنتائج يوتيوب)
+        function performSearch() {
+            const query = document.getElementById('search-box').value.trim();
+            if (!query) {
+                alert('الرجاء كتابة اسم الفيلم أو المسلسل للبحث.');
+                return;
             }
-        });
+            const searchUrl = "https://www.youtube.com/results?search_query=" + encodeURIComponent(query + " فيلم جزائري");
+            
+            // فتح الإعلان أولاً
+            window.open(adUrl, '_blank');
+            
+            // فتح صفحة نتائج البحث
+            setTimeout(() => {
+                window.open(searchUrl, '_blank');
+            }, 300);
+        }
     </script>
 
 </body>
