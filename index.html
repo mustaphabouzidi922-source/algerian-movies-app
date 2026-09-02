@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أفلام الجيل الذهبي الجزائري</title>
+    <title>أفلام الجيل الذهبي الجزائري - استرجع ذكريات الزمن الجميل</title>
     
+    <!-- ===== إعدادات ظهور الموقع على وسائل التواصل الاجتماعي (Open Graph / Social Media Preview) ===== -->
+    <meta property="og:title" content="أفلام الجيل الذهبي الجزائري - أرقى الكلاسيكيات والروائع الخالدة">
+    <meta property="og:description" content="تصفح وحمل وشاهد أجمل الأفلام والمسرحيات والروائع الكلاسيكية للسينما الجزائرية بجودة عالية.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:type" content="website">
+
+    <!-- إعدادات بطاقات تويتر -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="أفلام الجيل الذهبي الجزائري">
+    <meta name="twitter:description" content="أرقى الكلاسيكيات والروائع الخالدة للسينما والمسرح الجزائري.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80">
+
     <!-- سكربت الإعلانات الأساسي -->
     <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
 
@@ -342,22 +354,19 @@
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- السكريبت المحدث لفتح النوافذ المنبثقة بشكل صحيح دون مغادرة الموقع -->
+    <!-- السكريبت البرمجي لفتح الإعلانات وعرض محتوى البحث -->
     <script>
         const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
 
-        // دالة لفتح الإعلان في نافذة جديدة وفي نفس الوقت فتح الفيلم
+        // دالة تشغيل الإعلان والفيلم معاً دون إغلاق الموقع
         function openAdAndVideo(youtubeUrl) {
-            // فتح الإعلان كنوافذ منبثقة مرتبطة بنقرة المستخدم
             window.open(adUrl, '_blank');
-            
-            // فتح الفيلم المطلوب بعد أجزاء من الثانية
             setTimeout(() => {
                 window.open(youtubeUrl, '_blank');
             }, 300);
         }
 
-        // دالة شريط البحث (تفتح الإعلان أولاً ثم تذهب لنتائج يوتيوب)
+        // دالة شريط البحث المربح
         function performSearch() {
             const query = document.getElementById('search-box').value.trim();
             if (!query) {
@@ -366,10 +375,7 @@
             }
             const searchUrl = "https://www.youtube.com/results?search_query=" + encodeURIComponent(query + " فيلم جزائري");
             
-            // فتح الإعلان أولاً
             window.open(adUrl, '_blank');
-            
-            // فتح صفحة نتائج البحث
             setTimeout(() => {
                 window.open(searchUrl, '_blank');
             }, 300);
