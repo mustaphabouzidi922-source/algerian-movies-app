@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة أفلام الزمن الجميل - الجزائر</title>
+    <title>أفلام الجيل الذهبي الجزائري</title>
     
-    <!-- سكربت الإعلانات الخاص بك -->
+    <!-- سكربت الإعلانات الخاص بك (يعمل تلقائياً) -->
     <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
 
     <style>
         :root {
             --primary: #d4af37; 
             --accent: #d21034;  
-            --bg: #121214;      
+            --bg: #0f172a;      
             --card-bg: #1e293b; 
             --text-main: #ffffff; 
             --text-muted: #94a3b8; 
@@ -35,27 +35,30 @@
         }
 
         header {
-            background-color: #006233;
+            background: linear-gradient(135deg, #004d28, #006233);
             color: white;
             text-align: center;
-            padding: 24px 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            padding: 30px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border-bottom: 3px solid var(--primary);
         }
 
         header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 6px;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         header p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             opacity: 0.9;
         }
 
         .main-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 16px;
+            padding: 25px 16px;
             flex: 1;
             width: 100%;
         }
@@ -65,10 +68,10 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 15px 10px;
+            margin-bottom: 30px;
         }
 
-        .search-table {
+        .search-form {
             width: 100%;
             max-width: 650px;
             background: var(--card-bg);
@@ -76,11 +79,12 @@
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-            border-collapse: collapse;
+            display: flex;
+            flex-direction: row-reverse;
         }
 
         .search-input {
-            width: 78%;
+            flex-grow: 1;
             background: transparent;
             border: none;
             padding: 14px 20px;
@@ -94,135 +98,35 @@
             color: var(--text-muted);
         }
 
-        .search-btn-cell {
-            width: 22%;
-            background: var(--accent);
-            text-align: center;
-        }
-
         .search-btn {
-            background: transparent;
+            background: var(--accent);
             color: white;
             border: none;
-            width: 100%;
-            height: 100%;
-            padding: 14px 0;
+            padding: 0 25px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            transition: background 0.2s;
         }
 
-        /* لافتة الفنان عثمان عليوات */
-        .feature-banner {
-            background: linear-gradient(135deg, #004d28, #006233);
-            color: white;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            border: 2px solid var(--primary);
+        .search-btn:hover {
+            background: #b00d2b;
         }
 
-        .feature-img-box {
-            width: 105px;
-            height: 105px;
-            border-radius: 50%;
-            border: 3px solid var(--primary);
-            overflow: hidden;
-            flex-shrink: 0;
-            background-color: #fff;
-        }
-
-        .feature-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .feature-info h2 {
-            font-size: 1.4rem;
-            margin-bottom: 6px;
+        /* قسم 6 مربعات للأفلام */
+        .section-title {
+            font-size: 1.5rem;
             color: var(--primary);
+            margin-bottom: 20px;
+            border-right: 4px solid var(--accent);
+            padding-right: 10px;
         }
 
-        .feature-info p {
-            font-size: 0.9rem;
-            color: #e0e0e0;
-            line-height: 1.4;
-        }
-
-        /* تخصيص 4 خانات إعلانية مثيرة وجذابة (حب وعلاقات) */
-        .ads-grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .ad-box-item {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            border: 2px solid var(--accent);
-            border-radius: 14px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(210, 16, 52, 0.2);
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .ad-box-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .ad-box-img {
-            width: 100%;
-            height: 130px;
-            object-fit: cover;
-        }
-
-        .ad-box-content {
-            padding: 12px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .ad-box-title {
-            font-size: 1rem;
-            color: var(--primary);
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .ad-box-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .ad-box-btn {
-            background-color: var(--accent);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-
-        /* شبكة عرض الأفلام */
         .movies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .movie-card {
@@ -230,13 +134,11 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
             border: 1px solid var(--border-color);
             cursor: pointer;
-            text-decoration: none;
-            color: inherit;
         }
 
         .movie-card:hover {
@@ -246,7 +148,7 @@
 
         .movie-poster-wrapper {
             width: 100%;
-            height: 150px;
+            height: 170px;
             position: relative;
         }
 
@@ -262,8 +164,8 @@
             left: 10px;
             background: var(--accent);
             color: white;
-            padding: 3px 8px;
-            font-size: 0.7rem;
+            padding: 4px 10px;
+            font-size: 0.75rem;
             font-weight: bold;
             border-radius: 4px;
         }
@@ -277,16 +179,16 @@
         }
 
         .movie-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--primary);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .movie-desc {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             line-height: 1.4;
         }
 
@@ -294,40 +196,21 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
             background-color: var(--primary);
             color: #004d28;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        /* التنقل بين الصفحات */
-        .pagination {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 15px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-top: 30px;
-        }
-
-        .page-btn {
-            background-color: var(--primary);
-            color: #004d28;
-            border: none;
-            padding: 10px 24px;
+            padding: 10px;
             border-radius: 8px;
+            font-size: 0.95rem;
             font-weight: bold;
+            border: none;
             cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
         }
 
-        .page-info {
-            font-weight: bold;
-            color: var(--text-main);
+        .watch-action:hover {
+            background-color: #e5c158;
         }
 
         footer {
@@ -340,144 +223,209 @@
             border-top: 3px solid var(--primary);
         }
 
-        @media (max-width: 768px) {
-            .feature-banner { flex-direction: column; text-align: center; }
-            .feature-img-box { margin: 0 auto; }
+        /* نافذة الإعلان المؤقت عند الضغط على الفيلم */
+        #ad-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #ad-modal .ad-content-box {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(210,16,52,0.4);
+        }
+
+        #ad-modal h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        #ad-modal p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .timer-badge {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            background: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🎬 منصة سينما الجزائر الخالدة</h1>
-        <p>استمتع بأرقى وأروع الكلاسيكيات والأفلام الثورية والدرامية الجزائرية</p>
+        <h1>🎥 أفلام الجيل الذهبي الجزائري</h1>
+        <p>استرجع ذكريات الزمن الجميل مع أرقى الكلاسيكيات والروائع الخالدة</p>
     </header>
-
-    <!-- شريط البحث -->
-    <div class="search-wrapper">
-        <form action="https://www.youtube.com/results" method="get" target="_blank" style="width: 100%; display: flex; justify-content: center;">
-            <table class="search-table">
-                <tr>
-                    <td class="search-btn-cell">
-                        <button type="submit" class="search-btn">بحث</button>
-                    </td>
-                    <td>
-                        <input type="text" name="search_query" placeholder="🔍 ابحث عن أي فيلم في يوتيوب..." required class="search-input">
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
 
     <div class="main-container">
 
-        <!-- لافتة الفنان عثمان عليوات -->
-        <div class="feature-banner">
-            <div class="feature-img-box">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="الفنان عثمان عليوات">
-            </div>
-            <div class="feature-info">
-                <h2>تحية تقدير: الفنان القدير عثمان عليوات</h2>
-                <p>رمز من رموز الكوميديا والفن الراقي في الجزائر، أمتع العائلات الجزائرية بأعمال خالدة ترسخت في الأذهان.</p>
-            </div>
+        <!-- شريط البحث -->
+        <div class="search-wrapper">
+            <form action="https://www.youtube.com/results" method="get" target="_blank" class="search-form">
+                <button type="submit" class="search-btn">بحث</button>
+                <input type="text" name="search_query" placeholder="🔍 ابحث عن أي فيلم جزائري كلاسيكي..." required class="search-input">
+            </form>
         </div>
 
-        <!-- 4 خانات مخصصة للإعلانات الجذابة والمثيرة (حب، رومانسية، وعلاقات) داخل المنصة -->
-        <div class="ads-grid-4">
-            <!-- الإعلان الأول -->
-            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="ad-box-item">
-                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=400&q=80" alt="إعلان حب" class="ad-box-img">
-                <div class="ad-box-content">
-                    <div>
-                        <div class="ad-box-title">قصص الحب الحصرية 💖</div>
-                        <div class="ad-box-desc">اكتشف أسرار العواطف والعلاقات الخاصة الآن</div>
-                    </div>
-                    <span class="ad-box-btn">انقر للمشاهدة</span>
-                </div>
-            </a>
+        <h2 class="section-title">✨ مختارات الجيل الذهبي</h2>
 
-            <!-- الإعلان الثاني -->
-            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="ad-box-item">
-                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=400&q=80" alt="إعلان رومانسية" class="ad-box-img">
-                <div class="ad-box-content">
-                    <div>
-                        <div class="ad-box-title">عالم اللحظات الحميمة 🔥</div>
-                        <div class="ad-box-desc">أجمل اللقاءات الرومانسية والقصص المثيرة</div>
-                    </div>
-                    <span class="ad-box-btn">اكتشف الآن</span>
-                </div>
-            </a>
-
-            <!-- الإعلان الثالث -->
-            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="ad-box-item">
-                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=400&q=80" alt="إعلان علاقات" class="ad-box-img">
-                <div class="ad-box-content">
-                    <div>
-                        <div class="ad-box-title">دردشة وتعرف سريع 💕</div>
-                        <div class="ad-box-desc">تعرف على شركاء وحياة عاطفية جديدة كلياً</div>
-                    </div>
-                    <span class="ad-box-btn">انضم فوراً</span>
-                </div>
-            </a>
-
-            <!-- الإعلان الرابع -->
-            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="ad-box-item">
-                <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=400&q=80" alt="إعلان إثارة" class="ad-box-img">
-                <div class="ad-box-content">
-                    <div>
-                        <div class="ad-box-title">أجواء الحب والجاذبية ✨</div>
-                        <div class="ad-box-desc">محتوى خاص ومثير مصمم خصيصاً لجذب الأنظار</div>
-                    </div>
-                    <span class="ad-box-btn">اضغط هنا</span>
-                </div>
-            </a>
-        </div>
-
-        <!-- شبكة عرض الأفلام -->
+        <!-- شبكة 6 مربعات أفلام -->
         <div class="movies-grid">
-            <!-- فيلم 1 -->
-            <a href="https://www.youtube.com/watch?v=EXAMPLE1" target="_blank" class="movie-card">
+            <!-- الفيلم 1 -->
+            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر')">
                 <div class="movie-poster-wrapper">
-                    <span class="badge">حصري</span>
-                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80" alt="صورة الفيلم">
+                    <span class="badge">تحفة سينمائية</span>
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80" alt="معركة الجزائر">
                 </div>
                 <div class="movie-info">
                     <div>
                         <div class="movie-title">معركة الجزائر</div>
-                        <div class="movie-desc">تحفة سينمائية عالمية توثق بطولات الثورة التحريرية المجيدة.</div>
+                        <div class="movie-desc">الملحمة الكبرى التي وثقت نضال وبطولات الشعب الجزائري بكل إجلال.</div>
                     </div>
-                    <div class="watch-action">▶ مشاهدة الفيلم</div>
+                    <button class="watch-action">▶ مشاهدة الفيلم</button>
                 </div>
-            </a>
+            </div>
 
-            <!-- فيلم 2 -->
-            <a href="https://www.youtube.com/watch?v=EXAMPLE2" target="_blank" class="movie-card">
+            <!-- الفيلم 2 -->
+            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=فيلم+وقائع سنوات الجمر')">
                 <div class="movie-poster-wrapper">
-                    <span class="badge">كلاسيكي</span>
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" alt="صورة الفيلم">
+                    <span class="badge">حائز على السعفة</span>
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" alt="وقائع سنوات الجمر">
                 </div>
                 <div class="movie-info">
                     <div>
-                        <div class="movie-title">بوقبرين / العفيون</div>
-                        <div class="movie-desc">دراما اجتماعية جزائرية أصيلة تعكس واقع المجتمع وعراقته.</div>
+                        <div class="movie-title">وقائع سنوات الجمر</div>
+                        <div class="movie-desc">رائعة المخرج محمد الأخضر حمينة التي خلّدت التاريخ في أرفع المحافل.</div>
                     </div>
-                    <div class="watch-action">▶ مشاهدة الفيلم</div>
+                    <button class="watch-action">▶ مشاهدة الفيلم</button>
                 </div>
-            </a>
-        </div>
+            </div>
 
-        <!-- التنقل بين الصفحات -->
-        <div class="pagination">
-            <button class="page-btn" disabled>السابق</button>
-            <span class="page-info">الصفحة 1 من 3</span>
-            <button class="page-btn" onclick="alert('جاري الانتقال للصفحة التالية...')">التالي</button>
+            <!-- الفيلم 3 -->
+            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=فيلم+الأفيون والعصا')">
+                <div class="movie-poster-wrapper">
+                    <span class="badge">دراما ثورية</span>
+                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80" alt="الأفيون والعصا">
+                </div>
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-title">الأفيون والعصا</div>
+                        <div class="movie-desc">قصة الصمود والقرية الجزائرية في وجه المعاناة إبان الاستعمار.</div>
+                    </div>
+                    <button class="watch-action">▶ مشاهدة الفيلم</button>
+                </div>
+            </div>
+
+            <!-- الفيلم 4 -->
+            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=مسرحية+حانوت العجائب+أو+كوميديا جزائرية')">
+                <div class="movie-poster-wrapper">
+                    <span class="badge">كوميديا وجدانية</span>
+                    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80" alt="روائع الكوميديا">
+                </div>
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-title">روائع الفكاهة والمسرح</div>
+                        <div class="movie-desc">ابتسامة الزمن الجميل وأرقى الإبداعات الكوميدية التي أمتعت العائلات.</div>
+                    </div>
+                    <button class="watch-action">▶ مشاهدة الفيلم</button>
+                </div>
+            </div>
+
+            <!-- الفيلم 5 -->
+            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=فيلم+الريح+الأحمر')">
+                <div class="movie-poster-wrapper">
+                    <span class="badge">كلاسيكي</span>
+                    <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=500&q=80" alt="الريح الأحمر">
+                </div>
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-title">الريح الأحمر</div>
+                        <div class="movie-desc">عمل سينمائي بارز يروي تفاصيل دقيقة من التضحيات والبطولات الخالدة.</div>
+                    </div>
+                    <button class="watch-action">▶ مشاهدة الفيلم</button>
+                </div>
+            </div>
+
+            <!-- الفيلم 6 -->
+            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=سهرات+التلفزيون الجزائري القديمة')">
+                <div class="movie-poster-wrapper">
+                    <span class="badge">تراث أصيل</span>
+                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80" alt="سهرات الزمن الجميل">
+                </div>
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-title">سهرات التلفزيون العريقة</div>
+                        <div class="movie-desc">أجمل الأعمال التلفزيونية والدرامية التي جمعت العائلات الجزائرية.</div>
+                    </div>
+                    <button class="watch-action">▶ مشاهدة الفيلم</button>
+                </div>
+            </div>
         </div>
 
     </div>
 
+    <!-- نافذة إعلان الضغط المؤقت (تظهر عند النقر على أي فيلم لثوانٍ ثم تحولك ليوتيوب) -->
+    <div id="ad-modal">
+        <div class="ad-content-box">
+            <h3>🎬 جاري تجهيز الفيلم...</h3>
+            <p>يرجى الانتظار قليلاً ريثما يتم تحضير العرض الخاص بك.</p>
+            <div class="timer-badge" id="countdown">3</div>
+        </div>
+    </div>
+
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 - منصة سينما الجزائر الخالدة</p>
+        <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
+
+    <!-- سكريبت إدارة إعلان الضغط المؤقت وفاصل الـ 10 دقائق -->
+    <script>
+        function openMovieWithAd(youtubeUrl) {
+            const modal = document.getElementById('ad-modal');
+            const countdownEl = document.getElementById('countdown');
+            let timeLeft = 3;
+
+            modal.style.display = 'flex';
+            countdownEl.textContent = timeLeft;
+
+            let timer = setInterval(() => {
+                timeLeft--;
+                countdownEl.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    modal.style.display = 'none';
+                    window.open(youtubeUrl, '_blank');
+                }
+            }, 1000);
+        }
+
+        // نظام الفاصل الإعلاني التلقائي (كل 10 دقائق أثناء بقاء المستخدم في الموقع)
+        setInterval(() => {
+            if (confirm("📢 فاصل إعلاني دعمي قصير لاستمرار المنصة مجاناً. هل تريد المتابعة؟")) {
+                window.open("https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc", "_blank");
+            }
+        }, 10 * 60 * 1000); // 10 دقائق بالمللي ثانية
+    </script>
 
 </body>
 </html>
