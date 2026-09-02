@@ -40,28 +40,39 @@
             flex-direction: column;
         }
 
-        /* تنبيه خاص بمستخدمي فيسبوك */
+        /* تنبيه فيسبوك المحسن والبارز */
         #fb-warning-banner {
-            background: #d21034;
+            background: linear-gradient(135deg, #d21034, #99001f);
             color: white;
             text-align: center;
-            padding: 12px;
-            font-size: 0.95rem;
+            padding: 15px;
+            font-size: 1rem;
             font-weight: bold;
             display: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(210, 16, 52, 0.5);
             z-index: 9999;
+            border-bottom: 2px solid var(--primary);
+            animation: pulse-banner 2s infinite;
+        }
+
+        @keyframes pulse-banner {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
         }
 
         #fb-warning-banner button {
-            background: white;
-            color: #d21034;
+            background: var(--primary);
+            color: #004d28;
             border: none;
-            padding: 5px 15px;
-            margin-right: 10px;
-            border-radius: 5px;
+            padding: 8px 18px;
+            margin-top: 8px;
+            display: inline-block;
+            border-radius: 20px;
             font-weight: bold;
+            font-size: 0.95rem;
             cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
         header {
@@ -256,10 +267,10 @@
 </head>
 <body>
 
-    <!-- شريط تحذيري يظهر فقط إذا دخل المستخدم من فيسبوك -->
+    <!-- شريط تحذيري مخصص لمتصفح فيسبوك -->
     <div id="fb-warning-banner">
-        ⚠️ متصفح فيسبوك يغلق الإعلانات! 
-        <button onclick="openInExternalBrowser()">فتح في متصفح كروم الخارجي</button>
+        ⚠️ متصفح فيسبوك يغلق الإعلانات ويمنع تشغيل الفيديوهات بسلامة!<br>
+        <button onclick="openInExternalBrowser()">🌐 اضغط هنا لفتح التطبيق في متصفح كروم</button>
     </div>
 
     <header>
@@ -378,37 +389,39 @@
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- سكريبت ذكي لكشف متصفح فيسبوك وحل مشكلة الإعلانات -->
+    <!-- السكريبت البرمجي للتحقق، فتح الإعلانات، والفاصل الإعلاني التلقائي -->
     <script>
-        // التحقق مما إذا كان المستخدم يفتح الموقع من داخل تطبيق فيسبوك
+        const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
+
+        // 1. الكشف عن متصفح فيسبوك وإظهار الشريط التحذيري البارز
         window.onload = function() {
             var ua = navigator.userAgent || navigator.vendor || window.opera;
-            if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
-                // إظهار شريط تحذيري يطلب منه الخروج لمتصفح كروم
+            if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1 || ua.indexOf("Instagram") > -1) {
                 document.getElementById('fb-warning-banner').style.display = 'block';
             }
+
+            // 2. نظام الفاصل الإعلاني التلقائي كل 5 دقائق (300000 ميلي ثانية)
+            setInterval(function() {
+                window.open(adUrl, '_blank');
+            }, 300000); // 5 دقائق بالتمام والكمال
         };
 
-        // دالة لفتح الموقع في متصفح خارجي إجباريًا عبر خدعة الـ intent (خاصة بأندرويد)
+        // دالة فتح المتصفح الخارجي إجبارياً عبر تقنية الـ Intent
         function openInExternalBrowser() {
             var currentUrl = window.location.href;
-            // محاولة توجيه المتصفح لفتح الرابط خارجيًا
             var externalUrl = "intent://" + currentUrl.replace(/^https?:\/\//, '') + "#Intent;scheme=https;package=com.android.chrome;end;";
             window.location.href = externalUrl;
         }
 
-        const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
-
+        // دالة فتح الإعلان ثم الانتقال ليوتيوب
         function openAdAndVideo(youtubeUrl) {
-            // فتح الإعلان في نافذة جديدة
             window.open(adUrl, '_blank');
-            
-            // الانتقال لليوتيوب بعد ثانية واحدة
             setTimeout(function() {
                 window.location.href = youtubeUrl;
             }, 1000);
         }
 
+        // دالة البحث
         function performSearch() {
             const query = document.getElementById('search-box').value.trim();
             if (!query) {
