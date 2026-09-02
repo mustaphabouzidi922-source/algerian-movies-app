@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تطبيق الأفلام الجزائرية</title>
     
+    <!-- السكربت الأول من Adsterra -->
     <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
 
     <style>
@@ -58,7 +59,7 @@
             width: 100%;
         }
 
-        /* لافتة إعلانية واضحة يعلم الزائر محتواها قبل الضغط عليها */
+        /* لافتة الترويج الذكية */
         .promo-banner {
             background: linear-gradient(135deg, #1e293b, #0f172a);
             color: white;
@@ -198,41 +199,79 @@
             text-align: center;
         }
 
-        /* نافذة التنبيه عند الضغط على الفيلم */
-        #loading-modal {
+        /* نافذة العد التنازلي لمدة 15 ثانية للإعلان الفاصل */
+        #ad-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 9999;
             justify-content: center;
             align-items: center;
+            padding: 15px;
         }
 
-        .modal-content {
+        .ad-modal-content {
             background: white;
             padding: 30px;
             border-radius: 16px;
             text-align: center;
-            max-width: 320px;
-            width: 90%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
             animation: fadeIn 0.3s ease;
         }
 
-        .modal-content h3 {
+        .ad-modal-content h3 {
             color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
         }
 
-        .modal-content p {
+        .ad-modal-content p {
             color: var(--gray);
             font-size: 0.9rem;
+            margin-bottom: 20px;
             line-height: 1.5;
+        }
+
+        .countdown-box {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .modal-action-btn {
+            display: block;
+            width: 100%;
+            background-color: #cbd5e1;
+            color: #64748b;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: not-allowed;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .modal-action-btn.active {
+            background-color: var(--primary);
+            color: white;
+            cursor: pointer;
+        }
+
+        .modal-action-btn.active:hover {
+            background-color: #004d28;
         }
 
         @keyframes fadeIn {
@@ -305,14 +344,17 @@
 
     <div class="main-container">
 
+        <!-- لافتة الترويج الذكية -->
         <div class="promo-banner">
             <h3>🌟 رعاية منصة العرض والشركاء المميزين</h3>
             <p>اضغط على اللافتة أدناه لاستعراض العروض الحصرية ودعم استمرار وتطوير التطبيق مجاناً</p>
             <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="promo-btn">فتح العرض الحصري والرعاية 🚀</a>
         </div>
 
+        <!-- شبكة عرض الأفلام -->
         <div id="movies-grid" class="movies-grid"></div>
 
+        <!-- البانر الإعلاني (300x250) مدمج وسط الصفحة -->
         <div class="ad-container">
             <script>
               atOptions = {
@@ -326,6 +368,7 @@
             <script src="https://www.highrevenueformat.com/2403ecb124b17df2d80c5500bb88e687/invoke.js"></script>
         </div>
 
+        <!-- أزرار التنقل -->
         <div class="pagination">
             <button id="prev-btn" class="page-btn" onclick="changePage(-1)">← السابق</button>
             <span id="page-info" class="page-info">الصفحة 1 من 1</span>
@@ -334,11 +377,13 @@
 
     </div>
 
-    <div id="loading-modal">
-        <div class="modal-content">
-            <div style="font-size: 40px; margin-bottom: 10px;">🎞️</div>
-            <h3>جاري فتح الفيلم...</h3>
-            <p>يرجى الانتظار، يتم تحضير مشغل الفيديو وعرض الفيلم لك فوراً.</p>
+    <!-- نافذة العد التنازلي لمدة 15 ثانية للإعلان الفاصل -->
+    <div id="ad-modal">
+        <div class="ad-modal-content">
+            <h3>⏱️ فاصل إعلاني قصير</h3>
+            <p id="modal-movie-title">يرجى الانتظار لمدة 15 ثانية ريثما يكتمل الفاصل الإعلاني لدعم استمرار عرض فيلمك:</p>
+            <div id="countdown-timer" class="countdown-box">15</div>
+            <a id="final-watch-btn" href="#" target="_blank" class="modal-action-btn">يرجى الانتظار لينتهي الفاصل...</a>
         </div>
     </div>
 
@@ -347,6 +392,9 @@
     </footer>
 
     <script>
+        // رابط Direct Link الخاص بك لضمان الأرباح مع عداد الـ 15 ثانية
+        const adDirectLink = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
+
         // قائمة الأفلام
         const movies = [
             { title: "معركة الجزائر", desc: "ملحمة ثورية عالمية ترصد تفاصيل الكفاح البطولي.", image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80", link: "https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر" },
@@ -407,14 +455,9 @@
                     </div>
                 `;
 
-                // عند الضغط على الفيلم: يظهر تنبيه أن الفيلم يفتح، ثم ينتقل للفيلم
+                // عند الضغط على الفيلم: يبدأ عداد الـ 15 ثانية الإعلاني
                 card.onclick = function() {
-                    const modal = document.getElementById('loading-modal');
-                    modal.style.display = 'flex';
-
-                    setTimeout(function() {
-                        window.location.href = movie.link;
-                    }, 1200);
+                    openAdModal(movie);
                 };
 
                 grid.appendChild(card);
@@ -423,6 +466,47 @@
             document.getElementById('page-info').innerText = `الصفحة ${currentPage} من ${totalPages}`;
             document.getElementById('prev-btn').disabled = currentPage === 1;
             document.getElementById('next-btn').disabled = currentPage === totalPages;
+        }
+
+        function openAdModal(movie) {
+            const modal = document.getElementById('ad-modal');
+            const timerBox = document.getElementById('countdown-timer');
+            const watchBtn = document.getElementById('final-watch-btn');
+            const titleDesc = document.getElementById('modal-movie-title');
+
+            modal.style.display = 'flex';
+            titleDesc.innerHTML = `جاري تشغيل الفاصل الإعلاني لفيلم: <b style="color:var(--primary);">${movie.title}</b><br>يرجى الانتظار لمدة 15 ثانية حتى يكتمل الفاصل ويفتح الفيلم:`;
+            
+            let timeLeft = 15; // ضبط العد التنازلي تماماً على 15 ثانية كما طلبت
+            timerBox.innerText = timeLeft < 10 ? "0" + timeLeft : timeLeft;
+            
+            // قفل الزر أثناء الـ 15 ثانية
+            watchBtn.className = "modal-action-btn";
+            watchBtn.innerText = "يرجى الانتظار لينتهي الفاصل (15 ثانية)...";
+            watchBtn.href = "#";
+            watchBtn.onclick = function(e) { e.preventDefault(); };
+
+            // فتح رابط الأرباح (Direct Link) في الخلفية لتحقيق الربح فور بدء العداد
+            window.open(adDirectLink, '_blank');
+
+            const countdownInterval = setInterval(function() {
+                timeLeft--;
+                if (timeLeft > 0) {
+                    timerBox.innerText = timeLeft < 10 ? "0" + timeLeft : timeLeft;
+                } else {
+                    clearInterval(countdownInterval);
+                    timerBox.innerText = "00";
+                    
+                    // فتح وتفعيل زر الانتقال للفيلم بعد انقضاء الـ 15 ثانية
+                    watchBtn.className = "modal-action-btn active";
+                    watchBtn.innerText = "انتقل لمشاهدة الفيلم الآن 🎬";
+                    watchBtn.href = movie.link;
+                    
+                    watchBtn.onclick = function() {
+                        modal.style.display = 'none';
+                    };
+                }
+            }, 1000);
         }
 
         function changePage(direction) {
