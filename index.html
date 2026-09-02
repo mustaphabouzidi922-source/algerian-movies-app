@@ -154,34 +154,67 @@
             line-height: 1.4;
         }
 
-        /* لافتة الإعلان والشركاء */
-        .promo-banner {
-            background: linear-gradient(135deg, var(--card-bg), #0f172a);
-            color: white;
-            border-radius: 12px;
-            padding: 20px;
+        /* تخصيص 4 خانات إعلانية مثيرة وجذابة (حب وعلاقات) */
+        .ads-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .ad-box-item {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 2px solid var(--accent);
+            border-radius: 14px;
+            overflow: hidden;
             text-align: center;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 2px solid var(--border-color);
+            box-shadow: 0 6px 20px rgba(210, 16, 52, 0.2);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
         }
 
-        .promo-banner h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+        .ad-box-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .ad-box-img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+        }
+
+        .ad-box-content {
+            padding: 12px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ad-box-title {
+            font-size: 1rem;
             color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        .promo-btn {
-            display: inline-block;
+        .ad-box-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .ad-box-btn {
             background-color: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
             font-weight: bold;
-            text-decoration: none;
-            font-size: 0.95rem;
-            margin-top: 10px;
         }
 
         /* شبكة عرض الأفلام */
@@ -270,65 +303,6 @@
             font-weight: bold;
         }
 
-        /* نافذة الإعلان والعداد التنازلي داخلها */
-        #ad-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .ad-modal-content {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 380px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 2px solid var(--primary);
-            position: relative;
-        }
-
-        /* رسالة جانبية صغيرة مع العد التنازلي فوق الإعلان مباشرة داخل الصندوق */
-        .ad-timer-banner {
-            background: rgba(210, 16, 52, 0.15);
-            border: 1px dashed var(--accent);
-            color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-        .ad-timer-banner span {
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-            font-family: monospace;
-        }
-
-        .ad-frame-box {
-            width: 100%;
-            background: #000;
-            border-radius: 10px;
-            padding: 15px;
-            color: #ccc;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-color);
-        }
-
         /* التنقل بين الصفحات */
         .pagination {
             display: flex;
@@ -359,7 +333,7 @@
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #004d28;
+            background-color: #000a05;
             color: white;
             font-size: 0.9rem;
             margin-top: auto;
@@ -379,7 +353,7 @@
         <p>استمتع بأرقى وأروع الكلاسيكيات والأفلام الثورية والدرامية الجزائرية</p>
     </header>
 
-    <!-- شريط البحث الأصلي -->
+    <!-- شريط البحث -->
     <div class="search-wrapper">
         <form action="https://www.youtube.com/results" method="get" target="_blank" style="width: 100%; display: flex; justify-content: center;">
             <table class="search-table">
@@ -408,17 +382,61 @@
             </div>
         </div>
 
-        <!-- لافتة الإعلان والشركاء -->
-        <div class="promo-banner">
-            <h3>🌟 رعاية منصة العرض والشركاء المميزين</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">اضغط أدناه لاستعراض العروض الحصرية ودعم استمرار وتطوير التطبيق مجاناً</p>
-            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="promo-btn">🚀 فتح العرض الحصري والرعاية</a>
+        <!-- 4 خانات مخصصة للإعلانات الجذابة والمثيرة (حب، رومانسية، وعلاقات) داخل المنصة -->
+        <div class="ads-grid-4">
+            <!-- الإعلان الأول -->
+            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="ad-box-item">
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=400&q=80" alt="إعلان حب" class="ad-box-img">
+                <div class="ad-box-content">
+                    <div>
+                        <div class="ad-box-title">قصص الحب الحصرية 💖</div>
+                        <div class="ad-box-desc">اكتشف أسرار العواطف والعلاقات الخاصة الآن</div>
+                    </div>
+                    <span class="ad-box-btn">انقر للمشاهدة</span>
+                </div>
+            </a>
+
+            <!-- الإعلان الثاني -->
+            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="ad-box-item">
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=400&q=80" alt="إعلان رومانسية" class="ad-box-img">
+                <div class="ad-box-content">
+                    <div>
+                        <div class="ad-box-title">عالم اللحظات الحميمة 🔥</div>
+                        <div class="ad-box-desc">أجمل اللقاءات الرومانسية والقصص المثيرة</div>
+                    </div>
+                    <span class="ad-box-btn">اكتشف الآن</span>
+                </div>
+            </a>
+
+            <!-- الإعلان الثالث -->
+            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="ad-box-item">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=400&q=80" alt="إعلان علاقات" class="ad-box-img">
+                <div class="ad-box-content">
+                    <div>
+                        <div class="ad-box-title">دردشة وتعرف سريع 💕</div>
+                        <div class="ad-box-desc">تعرف على شركاء وحياة عاطفية جديدة كلياً</div>
+                    </div>
+                    <span class="ad-box-btn">انضم فوراً</span>
+                </div>
+            </a>
+
+            <!-- الإعلان الرابع -->
+            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="ad-box-item">
+                <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=400&q=80" alt="إعلان إثارة" class="ad-box-img">
+                <div class="ad-box-content">
+                    <div>
+                        <div class="ad-box-title">أجواء الحب والجاذبية ✨</div>
+                        <div class="ad-box-desc">محتوى خاص ومثير مصمم خصيصاً لجذب الأنظار</div>
+                    </div>
+                    <span class="ad-box-btn">اضغط هنا</span>
+                </div>
+            </a>
         </div>
 
         <!-- شبكة عرض الأفلام -->
         <div class="movies-grid">
             <!-- فيلم 1 -->
-            <div class="movie-card" onclick="openAdModal('https://www.youtube.com/watch?v=EXAMPLE1')">
+            <a href="https://www.youtube.com/watch?v=EXAMPLE1" target="_blank" class="movie-card">
                 <div class="movie-poster-wrapper">
                     <span class="badge">حصري</span>
                     <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80" alt="صورة الفيلم">
@@ -430,10 +448,10 @@
                     </div>
                     <div class="watch-action">▶ مشاهدة الفيلم</div>
                 </div>
-            </div>
+            </a>
 
             <!-- فيلم 2 -->
-            <div class="movie-card" onclick="openAdModal('https://www.youtube.com/watch?v=EXAMPLE2')">
+            <a href="https://www.youtube.com/watch?v=EXAMPLE2" target="_blank" class="movie-card">
                 <div class="movie-poster-wrapper">
                     <span class="badge">كلاسيكي</span>
                     <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" alt="صورة الفيلم">
@@ -445,7 +463,7 @@
                     </div>
                     <div class="watch-action">▶ مشاهدة الفيلم</div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- التنقل بين الصفحات -->
@@ -457,59 +475,9 @@
 
     </div>
 
-    <!-- نافذة العد التنازلي الفوري -->
-    <div id="ad-modal">
-        <div class="ad-modal-content">
-            <!-- رسالة جانبية صغيرة مع عداد تنازلي فوق الإعلان بداخل الصندوق -->
-            <div class="ad-timer-banner">
-                <span>اصبر ثانية (<span id="countdown">15</span>ث)</span>
-                <span style="font-size: 0.8rem; color: #fff;">جاري تجهيز الفيلم...</span>
-            </div>
-
-            <div class="ad-frame-box">
-                <p style="margin-bottom: 5px; color: var(--primary); font-weight: bold;">إعلان داعم للمنصة</p>
-                <p>يرجى الانتظار بينما يتم تحويلك تلقائياً إلى الفيلم...</p>
-            </div>
-
-            <button onclick="closeAdModal()" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:0.85rem;">إلغاء</button>
-        </div>
-    </div>
-
     <footer>
         <p>جميع الحقوق محفوظة © 2026 - منصة سينما الجزائر الخالدة</p>
     </footer>
 
-    <script>
-        let targetUrl = '';
-        let timerInterval;
-
-        function openAdModal(url) {
-            targetUrl = url;
-            const modal = document.getElementById('ad-modal');
-            const countdownEl = document.getElementById('countdown');
-            
-            modal.style.display = 'flex';
-            let timeLeft = 15; // يبدأ من 15 ثانية وي تناقص
-            countdownEl.textContent = timeLeft;
-
-            clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                countdownEl.textContent = timeLeft;
-                
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    modal.style.display = 'none';
-                    // الانتقال التلقائي والمباشر للفيلم في يوتيوب عند انتهاء العداد
-                    window.open(targetUrl, '_blank');
-                }
-            }, 1000);
-        }
-
-        function closeAdModal() {
-            clearInterval(timerInterval);
-            document.getElementById('ad-modal').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
