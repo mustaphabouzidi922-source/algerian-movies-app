@@ -61,18 +61,15 @@
             width: 100%;
         }
 
-        /* شريط البحث المظبوط تماماً */
-        .youtube-search-container {
+        /* شريط البحث المضمون والمعدل تماماً بالجدول لعدم الانعكاس */
+        .search-wrapper {
             width: 100%;
             display: flex;
             justify-content: center;
             padding: 15px 10px;
-            background-color: var(--bg);
         }
 
-        .search-form {
-            display: flex;
-            flex-direction: row-reverse;
+        .search-table {
             width: 100%;
             max-width: 650px;
             background: var(--card-bg);
@@ -80,10 +77,11 @@
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+            border-collapse: collapse;
         }
 
         .search-input {
-            flex: 1;
+            width: 80%;
             background: transparent;
             border: none;
             padding: 14px 20px;
@@ -97,22 +95,25 @@
             color: var(--text-muted);
         }
 
-        .search-btn {
+        .search-btn-cell {
+            width: 20%;
             background: var(--accent);
+            text-align: center;
+        }
+
+        .search-btn {
+            background: transparent;
             color: white;
             border: none;
-            padding: 0 25px;
+            width: 100%;
+            height: 100%;
+            padding: 14px 0;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s ease;
         }
 
-        .search-btn:hover {
-            background: #b91c1c;
-        }
-
-        /* لافتة الفنان عثمان عليوات */
+        /* لافتة الفنان عثمان عليوات المصححة كلياً */
         .feature-banner {
             background: linear-gradient(135deg, #004d28, #006233);
             color: white;
@@ -126,32 +127,32 @@
             border: 2px solid var(--primary);
         }
 
-        .feature-img-wrapper {
-            width: 110px;
-            height: 110px;
+        .feature-img-box {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
+            border: 3px solid var(--primary);
             overflow: hidden;
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             flex-shrink: 0;
+            background-color: #fff;
         }
 
-        .feature-img-wrapper img {
+        .feature-img-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
         .feature-info h2 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
             color: var(--primary);
         }
 
         .feature-info p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #e0e0e0;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         /* لافتة الإعلان والشركاء */
@@ -182,16 +183,6 @@
             text-decoration: none;
             font-size: 0.95rem;
             margin-top: 10px;
-        }
-
-        /* حاوية الإعلانات الوسطية */
-        .ad-container {
-            text-align: center;
-            margin: 25px 0;
-            display: flex;
-            justify-content: center;
-            min-height: 260px; /* لحجز مكان الإعلان */
-            align-items: center;
         }
 
         /* شبكة عرض الأفلام */
@@ -280,7 +271,7 @@
             font-weight: bold;
         }
 
-        /* نافذة العد التنازلي (15 ثانية) */
+        /* نافذة العد التنازلي للإعلانات (15 ثانية) */
         #ad-modal {
             display: none;
             position: fixed;
@@ -342,17 +333,12 @@
             font-size: 1rem;
             cursor: not-allowed;
             text-decoration: none;
-            transition: background 0.3s;
         }
 
         .modal-action-btn.active {
             background-color: var(--primary);
             color: #004d28;
             cursor: pointer;
-        }
-
-        .modal-action-btn.active:hover {
-            background-color: #bf9c31;
         }
 
         /* التنقل بين الصفحات */
@@ -377,12 +363,6 @@
             cursor: pointer;
         }
 
-        .page-btn:disabled {
-            background-color: var(--border-color);
-            color: var(--text-muted);
-            cursor: not-allowed;
-        }
-
         .page-info {
             font-weight: bold;
             color: var(--text-main);
@@ -390,7 +370,7 @@
 
         footer {
             text-align: center;
-            padding: 25px;
+            padding: 20px;
             background-color: #004d28;
             color: white;
             font-size: 0.9rem;
@@ -400,8 +380,7 @@
 
         @media (max-width: 768px) {
             .feature-banner { flex-direction: column; text-align: center; }
-            .feature-img-wrapper { margin: 0 auto; }
-            header h1 { font-size: 1.5rem; }
+            .feature-img-box { margin: 0 auto; }
         }
     </style>
 </head>
@@ -412,20 +391,28 @@
         <p>استمتع بأرقى وأروع الكلاسيكيات والأفلام الثورية والدرامية الجزائرية</p>
     </header>
 
-    <!-- 1. شريط البحث الجديد -->
-    <div class="youtube-search-container">
-        <form action="https://www.youtube.com/results" method="get" target="_blank" class="search-form">
-            <input type="text" name="search_query" placeholder="🔍 ابحث عن أي فيلم في يوتيوب..." required class="search-input">
-            <button type="submit" class="search-btn">بحث</button>
+    <!-- شريط البحث المعدل والمضمون 100% -->
+    <div class="search-wrapper">
+        <form action="https://www.youtube.com/results" method="get" target="_blank" style="width: 100%; display: flex; justify-content: center;">
+            <table class="search-table">
+                <tr>
+                    <td class="search-btn-cell">
+                        <button type="submit" class="search-btn">بحث</button>
+                    </td>
+                    <td>
+                        <input type="text" name="search_query" placeholder="🔍 ابحث عن أي فيلم في يوتيوب..." required class="search-input">
+                    </td>
+                </tr>
+            </table>
         </form>
     </div>
 
     <div class="main-container">
 
-        <!-- 2. لافتة الفنان عثمان عليوات -->
+        <!-- لافتة الفنان عثمان عليوات مع صورة واضحة ومضمونة -->
         <div class="feature-banner">
-            <div class="feature-img-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Athmane_Ariouat_2015.jpg/330px-Athmane_Ariouat_2015.jpg" alt="الفنان عثمان عليوات">
+            <div class="feature-img-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="الفنان عثمان عليوات">
             </div>
             <div class="feature-info">
                 <h2>تحية تقدير: الفنان القدير عثمان عليوات</h2>
@@ -433,8 +420,107 @@
             </div>
         </div>
 
-        <!-- 3. لافتة الترويج الذكية -->
+        <!-- لافتة الترويج والشركاء -->
         <div class="promo-banner">
             <h3>🌟 رعاية منصة العرض والشركاء المميزين</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">اضغط أدناه لاستعراض العروض الحصرية ودعم استمرار وتطوير التطبيق مجاناً</p>
-            <a href="
+            <a href="https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc" target="_blank" class="promo-btn">🚀 فتح العرض الحصري والرعاية</a>
+        </div>
+
+        <!-- شبكة عرض الأفلام -->
+        <div class="movies-grid">
+            <!-- فيلم 1 -->
+            <div class="movie-card" onclick="openAdModal('https://www.youtube.com/watch?v=EXAMPLE1')">
+                <div class="movie-poster-wrapper">
+                    <span class="badge">حصري</span>
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80" alt="صورة الفيلم">
+                </div>
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-title">معركة الجزائر</div>
+                        <div class="movie-desc">تحفة سينمائية عالمية توثق بطولات الثورة التحريرية المجيدة.</div>
+                    </div>
+                    <div class="watch-action">▶ مشاهدة الفيلم</div>
+                </div>
+            </div>
+
+            <!-- فيلم 2 -->
+            <div class="movie-card" onclick="openAdModal('https://www.youtube.com/watch?v=EXAMPLE2')">
+                <div class="movie-poster-wrapper">
+                    <span class="badge">كلاسيكي</span>
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" alt="صورة الفيلم">
+                </div>
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-title">بوقبرين / العفيون</div>
+                        <div class="movie-desc">دراما اجتماعية جزائرية أصيلة تعكس واقع المجتمع وعراقته.</div>
+                    </div>
+                    <div class="watch-action">▶ مشاهدة الفيلم</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- التنقل بين الصفحات -->
+        <div class="pagination">
+            <button class="page-btn" disabled>السابق</button>
+            <span class="page-info">الصفحة 1 من 3</span>
+            <button class="page-btn" onclick="alert('جاري الانتقال للصفحة التالية...')">التالي</button>
+        </div>
+
+    </div>
+
+    <!-- نافذة العد التنازلي (15 ثانية) -->
+    <div id="ad-modal">
+        <div class="ad-modal-content">
+            <h3>يرجى الانتظار قليلاً...</h3>
+            <p>جاري تجهيز رابط الفيلم الخاص بك عبر رعاية المنصة</p>
+            <div class="countdown-box" id="countdown">15</div>
+            <a id="final-link" href="#" target="_blank" class="modal-action-btn">الرجاء الانتظار...</a>
+            <button onclick="closeAdModal()" style="background:none; border:none; color:var(--text-muted); margin-top:15px; cursor:pointer; font-size:0.9rem;">إلغاء</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 - منصة سينما الجزائر الخالدة</p>
+    </footer>
+
+    <script>
+        let targetUrl = '';
+        let timerInterval;
+
+        function openAdModal(url) {
+            targetUrl = url;
+            const modal = document.getElementById('ad-modal');
+            const countdownEl = document.getElementById('countdown');
+            const finalBtn = document.getElementById('final-link');
+            
+            modal.style.display = 'flex';
+            let timeLeft = 15;
+            countdownEl.textContent = timeLeft;
+            
+            finalBtn.classList.remove('active');
+            finalBtn.textContent = 'الرجاء الانتظار...';
+            finalBtn.href = '#';
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                countdownEl.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    countdownEl.textContent = '✓';
+                    finalBtn.textContent = 'اضغط هنا للانتقال إلى الفيلم الآن';
+                    finalBtn.classList.add('active');
+                    finalBtn.href = targetUrl;
+                }
+            }, 1000);
+        }
+
+        function closeAdModal() {
+            clearInterval(timerInterval);
+            document.getElementById('ad-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
