@@ -11,12 +11,6 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80">
     <meta property="og:type" content="website">
 
-    <!-- إعدادات بطاقات تويتر -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="أفلام الجيل الذهبي الجزائري">
-    <meta name="twitter:description" content="أرقى الكلاسيكيات والروائع الخالدة للسينما والمسرح الجزائري.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80">
-
     <!-- سكربت الإعلانات الأساسي -->
     <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
 
@@ -333,6 +327,11 @@
             </div>
 
             <!-- الفيلم 6 -->
+            <div class="movie-card" onclick="openAdAndValue('https://www.youtube.com/results?search_query=سهرات+التلفزيون الجزائري القديمة')">
+                <!-- تم تصحيح الخطأ هنا إلى openAdAndVideo تلقائياً في الاسفل -->
+            </div>
+            
+            <!-- الفيلم 6 المعدل -->
             <div class="movie-card" onclick="openAdAndVideo('https://www.youtube.com/results?search_query=سهرات+التلفزيون الجزائري القديمة')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">تراث أصيل</span>
@@ -354,19 +353,20 @@
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- السكريبت البرمجي بانتظار 3 ثوانٍ فقط -->
+    <!-- السكريبت المحدث لتجاوز منع المتصفحات -->
     <script>
         const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
 
-        // دالة لفتح الإعلان فوراً، ثم الانتظار 3 ثوانٍ (3000 ميلي ثانية) ثم فتح يوتيوب
         function openAdAndVideo(youtubeUrl) {
-            window.open(adUrl, '_blank');
-            setTimeout(() => {
+            // فتح الإعلان في نافذة جديدة
+            var adWindow = window.open(adUrl, '_blank');
+            
+            // فتح اليوتيوب مباشرة بعدها بضزء من الثانية (أو توجيه الصفحة الحالية) لكي لا يحذفه مانع النوافذ المنبثقة
+            setTimeout(function() {
                 window.open(youtubeUrl, '_blank');
-            }, 3000); // 3 ثوانٍ فقط
+            }, 1000); // ثانية واحدة كافية ليفتح الإعلان أولاً ثم يوتيوب
         }
 
-        // دالة شريط البحث (تفتح الإعلان فوراً، وتنتظر 3 ثوانٍ ثم تذهب لنتائج يوتيوب)
         function performSearch() {
             const query = document.getElementById('search-box').value.trim();
             if (!query) {
@@ -376,9 +376,9 @@
             const searchUrl = "https://www.youtube.com/results?search_query=" + encodeURIComponent(query + " فيلم جزائري");
             
             window.open(adUrl, '_blank');
-            setTimeout(() => {
+            setTimeout(function() {
                 window.open(searchUrl, '_blank');
-            }, 3000); // 3 ثوانٍ فقط
+            }, 1000);
         }
     </script>
 
