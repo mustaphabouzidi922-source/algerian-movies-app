@@ -40,39 +40,53 @@
             flex-direction: column;
         }
 
-        /* تنبيه فيسبوك المحسن والبارز */
+        /* تحذير فيسبوك */
         #fb-warning-banner {
             background: linear-gradient(135deg, #d21034, #99001f);
             color: white;
             text-align: center;
-            padding: 15px;
-            font-size: 1rem;
+            padding: 12px;
+            font-size: 0.95rem;
             font-weight: bold;
             display: none;
-            box-shadow: 0 4px 15px rgba(210, 16, 52, 0.5);
             z-index: 9999;
             border-bottom: 2px solid var(--primary);
-            animation: pulse-banner 2s infinite;
-        }
-
-        @keyframes pulse-banner {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.01); }
-            100% { transform: scale(1); }
         }
 
         #fb-warning-banner button {
             background: var(--primary);
             color: #004d28;
             border: none;
-            padding: 8px 18px;
-            margin-top: 8px;
+            padding: 6px 15px;
+            margin-top: 5px;
             display: inline-block;
-            border-radius: 20px;
+            border-radius: 15px;
             font-weight: bold;
-            font-size: 0.95rem;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        /* رسالة الانتظار الخضراء */
+        #loading-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10b981;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            display: none;
+            z-index: 10000;
+            text-align: center;
+            animation: bounce 0.5s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
         }
 
         header {
@@ -267,11 +281,14 @@
 </head>
 <body>
 
-    <!-- شريط تحذيري مخصص لمتصفح فيسبوك -->
+    <!-- تحذير فيسبوك -->
     <div id="fb-warning-banner">
-        ⚠️ متصفح فيسبوك يغلق الإعلانات ويمنع تشغيل الفيديوهات بسلامة!<br>
-        <button onclick="openInExternalBrowser()">🌐 اضغط هنا لفتح التطبيق في متصفح كروم</button>
+        ⚠️ متصفح فيسبوك قد يغلق الإعلانات والفيديوهات!<br>
+        <button onclick="openInExternalBrowser()">🌐 افتح الموقع في متصفح كروم الخارجي</button>
     </div>
+
+    <!-- رسالة الانتظار الخضراء -->
+    <div id="loading-toast">⏳ انتظر قليلاً، جاري تجهيز المحتوى...</div>
 
     <header>
         <h1>🎥 أفلام الجيل الذهبي الجزائري</h1>
@@ -280,7 +297,7 @@
 
     <div class="main-container">
 
-        <!-- شريط البحث المربح -->
+        <!-- شريط البحث -->
         <div class="search-wrapper">
             <div class="search-form">
                 <button type="button" onclick="performSearch()" class="search-btn">بحث</button>
@@ -389,39 +406,63 @@
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- السكريبت البرمجي للتحقق، فتح الإعلانات، والفاصل الإعلاني التلقائي -->
+    <!-- السكريبت البرمجي المطور -->
     <script>
         const adUrl = "https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc";
 
-        // 1. الكشف عن متصفح فيسبوك وإظهار الشريط التحذيري البارز
+        // عند فتح الصفحة لأول مرة (إعلان وقت فتح الصفحة مع رسالة انتظر قليلاً)
         window.onload = function() {
             var ua = navigator.userAgent || navigator.vendor || window.opera;
             if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1 || ua.indexOf("Instagram") > -1) {
                 document.getElementById('fb-warning-banner').style.display = 'block';
             }
 
-            // 2. نظام الفاصل الإعلاني التلقائي كل 5 دقائق (300000 ميلي ثانية)
+            // إظهار الرسالة الخضراء وإطلاق الإعلان عند دخول الصفحة
+            const toast = document.getElementById('loading-toast');
+            toast.innerText = "⏳ انتظر قليلاً، يتم تحميل الصفحة والإعلانات...";
+            toast.style.display = 'block';
+
+            setTimeout(function() {
+                try {
+                    window.open(adUrl, '_blank');
+                } catch(e) {}
+                toast.style.display = 'none';
+            }, 1500);
+
+            // فاصل إعلاني تلقائي كل 5 دقائق أثناء التصفح
             setInterval(function() {
-                window.open(adUrl, '_blank');
-            }, 300000); // 5 دقائق بالتمام والكمال
+                toast.innerText = "⏳ انتظر قليلاً، فاصل إعلاني...";
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    window.open(adUrl, '_blank');
+                    toast.style.display = 'none';
+                }, 1000);
+            }, 300000); 
         };
 
-        // دالة فتح المتصفح الخارجي إجبارياً عبر تقنية الـ Intent
         function openInExternalBrowser() {
             var currentUrl = window.location.href;
             var externalUrl = "intent://" + currentUrl.replace(/^https?:\/\//, '') + "#Intent;scheme=https;package=com.android.chrome;end;";
             window.location.href = externalUrl;
         }
 
-        // دالة فتح الإعلان ثم الانتقال ليوتيوب
+        // دالة عرض رسالة الانتظار الخضراء وفتح الإعلان وقت مشاهدة الفيلم
         function openAdAndVideo(youtubeUrl) {
-            window.open(adUrl, '_blank');
+            const toast = document.getElementById('loading-toast');
+            toast.innerText = "⏳ انتظر قليلاً، جاري تجهيز وتشغيل الفيلم...";
+            toast.style.display = 'block';
+
+            try {
+                window.open(adUrl, '_blank');
+            } catch (e) {}
+
             setTimeout(function() {
+                toast.style.display = 'none';
                 window.location.href = youtubeUrl;
-            }, 1000);
+            }, 1500);
         }
 
-        // دالة البحث
+        // دالة البحث مع الإعلان والرسالة الخضراء
         function performSearch() {
             const query = document.getElementById('search-box').value.trim();
             if (!query) {
@@ -430,10 +471,18 @@
             }
             const searchUrl = "https://www.youtube.com/results?search_query=" + encodeURIComponent(query + " فيلم جزائري");
             
-            window.open(adUrl, '_blank');
+            const toast = document.getElementById('loading-toast');
+            toast.innerText = "⏳ انتظر قليلاً، جاري البحث وتجهيز النتائج...";
+            toast.style.display = 'block';
+
+            try {
+                window.open(adUrl, '_blank');
+            } catch (e) {}
+
             setTimeout(function() {
+                toast.style.display = 'none';
                 window.location.href = searchUrl;
-            }, 1000);
+            }, 1500);
         }
     </script>
 
