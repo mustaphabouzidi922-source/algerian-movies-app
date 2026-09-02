@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أفلام الجيل الذهبي الجزائري</title>
     
-    <!-- سكربت الإعلانات الخاص بك (يعمل تلقائياً) -->
+    <!-- سكربت الإعلانات الخاص بك -->
     <script src="https://pl31074421.profitableratecpmnetwork.com/4d/90/ae/4d90aef292b8bf73f20b9a12d6890456.js"></script>
 
     <style>
@@ -223,8 +223,8 @@
             border-top: 3px solid var(--primary);
         }
 
-        /* نافذة الإعلان المؤقت عند الضغط على الفيلم */
-        #ad-modal {
+        /* تصميم النافذة المنبثقة التفاعلية لمنع الحظر من المتصفح */
+        #popup-ad-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -232,42 +232,59 @@
             z-index: 9999;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            color: white;
-            text-align: center;
             padding: 20px;
         }
 
-        #ad-modal .ad-content-box {
+        .popup-box {
             background: var(--card-bg);
             border: 2px solid var(--accent);
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 16px;
             max-width: 450px;
             width: 100%;
-            box-shadow: 0 10px 25px rgba(210,16,52,0.4);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(210,16,52,0.5);
         }
 
-        #ad-modal h3 {
+        .popup-box h3 {
             color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
         }
 
-        #ad-modal p {
+        .popup-box p {
             color: var(--text-muted);
+            font-size: 0.9rem;
             margin-bottom: 20px;
-            font-size: 0.95rem;
         }
 
-        .timer-badge {
-            font-size: 1.2rem;
+        .popup-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
             font-weight: bold;
-            color: var(--accent);
-            background: #fff;
-            padding: 5px 15px;
-            border-radius: 20px;
-            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+
+        .popup-btn:hover {
+            background-color: #b00d2b;
+        }
+
+        .popup-close {
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -293,7 +310,7 @@
         <!-- شبكة 6 مربعات أفلام -->
         <div class="movies-grid">
             <!-- الفيلم 1 -->
-            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر')">
+            <div class="movie-card" onclick="prepareMovie('https://www.youtube.com/results?search_query=فيلم+معركة+الجزائر')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">تحفة سينمائية</span>
                     <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80" alt="معركة الجزائر">
@@ -308,7 +325,7 @@
             </div>
 
             <!-- الفيلم 2 -->
-            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=فيلم+وقائع سنوات الجمر')">
+            <div class="movie-card" onclick="prepareMovie('https://www.youtube.com/results?search_query=فيلم+وقائع سنوات الجمر')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">حائز على السعفة</span>
                     <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" alt="وقائع سنوات الجمر">
@@ -323,7 +340,7 @@
             </div>
 
             <!-- الفيلم 3 -->
-            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=فيلم+الأفيون والعصا')">
+            <div class="movie-card" onclick="prepareMovie('https://www.youtube.com/results?search_query=فيلم+الأفيون والعصا')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">دراما ثورية</span>
                     <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80" alt="الأفيون والعصا">
@@ -338,7 +355,7 @@
             </div>
 
             <!-- الفيلم 4 -->
-            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=مسرحية+حانوت العجائب+أو+كوميديا جزائرية')">
+            <div class="movie-card" onclick="prepareMovie('https://www.youtube.com/results?search_query=مسرحية+حانوت العجائب+أو+كوميديا جزائرية')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">كوميديا وجدانية</span>
                     <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80" alt="روائع الكوميديا">
@@ -353,7 +370,7 @@
             </div>
 
             <!-- الفيلم 5 -->
-            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=فيلم+الريح+الأحمر')">
+            <div class="movie-card" onclick="prepareMovie('https://www.youtube.com/results?search_query=فيلم+الريح+الأحمر')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">كلاسيكي</span>
                     <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=500&q=80" alt="الريح الأحمر">
@@ -368,7 +385,7 @@
             </div>
 
             <!-- الفيلم 6 -->
-            <div class="movie-card" onclick="openMovieWithAd('https://www.youtube.com/results?search_query=سهرات+التلفزيون الجزائري القديمة')">
+            <div class="movie-card" onclick="prepareMovie('https://www.youtube.com/results?search_query=سهرات+التلفزيون الجزائري القديمة')">
                 <div class="movie-poster-wrapper">
                     <span class="badge">تراث أصيل</span>
                     <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80" alt="سهرات الزمن الجميل">
@@ -385,12 +402,14 @@
 
     </div>
 
-    <!-- نافذة إعلان الضغط المؤقت (تظهر عند النقر على أي فيلم لثوانٍ ثم تحولك ليوتيوب) -->
-    <div id="ad-modal">
-        <div class="ad-content-box">
-            <h3>🎬 جاري تجهيز الفيلم...</h3>
-            <p>يرجى الانتظار قليلاً ريثما يتم تحضير العرض الخاص بك.</p>
-            <div class="timer-badge" id="countdown">3</div>
+    <!-- نافذة منبثقة تفاعلية تضمن فتح الإعلان بدون حظر المتصفح -->
+    <div id="popup-ad-modal">
+        <div class="popup-box">
+            <h3>🎬 جاهز للمشاهدة؟</h3>
+            <p>اضغط على الزر أدناه لفتح العرض الترويجي وبدء تشغيل الفيلم مباشرة.</p>
+            <button class="popup-btn" id="confirm-watch-btn">🚀 اضغط هنا للمتابعة ومشاهدة الفيلم</button>
+            <br>
+            <button class="popup-close" onclick="closePopup()">إلغاء</button>
         </div>
     </div>
 
@@ -398,33 +417,39 @@
         <p>جميع الحقوق محفوظة © 2026 - أفلام الجيل الذهبي الجزائري</p>
     </footer>
 
-    <!-- سكريبت إدارة إعلان الضغط المؤقت وفاصل الـ 10 دقائق -->
+    <!-- سكريبت إدارة النافذة والفاصل الزمني -->
     <script>
-        function openMovieWithAd(youtubeUrl) {
-            const modal = document.getElementById('ad-modal');
-            const countdownEl = document.getElementById('countdown');
-            let timeLeft = 3;
+        let pendingUrl = "";
 
-            modal.style.display = 'flex';
-            countdownEl.textContent = timeLeft;
-
-            let timer = setInterval(() => {
-                timeLeft--;
-                countdownEl.textContent = timeLeft;
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    modal.style.display = 'none';
-                    window.open(youtubeUrl, '_blank');
-                }
-            }, 1000);
+        function prepareMovie(youtubeUrl) {
+            pendingUrl = youtubeUrl;
+            document.getElementById('popup-ad-modal').style.display = 'flex';
         }
 
-        // نظام الفاصل الإعلاني التلقائي (كل 10 دقائق أثناء بقاء المستخدم في الموقع)
+        function closePopup() {
+            document.getElementById('popup-ad-modal').style.display = 'none';
+        }
+
+        // عند ضغط المستخدم على زر المتابعة داخل النافذة المنبثقة (هذه نقرة حقيقية يسمح بها المتصفح فوراً)
+        document.getElementById('confirm-watch-btn').addEventListener('click', function() {
+            // 1. فتح الإعلان في نافذة مستقلة
+            window.open("https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc", "_blank");
+            
+            // 2. الانتقال إلى رابط الفيلم على يوتيوب
+            if (pendingUrl) {
+                window.open(pendingUrl, '_blank');
+            }
+            
+            // 3. إغلاق النافذة
+            closePopup();
+        });
+
+        // نظام الفاصل الإعلاني التلقائي كل 10 دقائق
         setInterval(() => {
             if (confirm("📢 فاصل إعلاني دعمي قصير لاستمرار المنصة مجاناً. هل تريد المتابعة؟")) {
                 window.open("https://www.profitableratecpmnetwork.com/rwy72w8c?key=3263def15328e43b448790478d03ebfc", "_blank");
             }
-        }, 10 * 60 * 1000); // 10 دقائق بالمللي ثانية
+        }, 10 * 60 * 1000);
     </script>
 
 </body>
